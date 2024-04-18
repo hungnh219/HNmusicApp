@@ -1,0 +1,1 @@
+const int background_color_rgb = 0xFFEE82EE;
