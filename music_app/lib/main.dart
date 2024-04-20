@@ -11,31 +11,49 @@ void main() {
     debugShowCheckedModeBanner: false,
     home: SafeArea(
       child: Scaffold(
-        body: Column(
-          children: [
-            const Text(
-              app_name,
-              style: TextStyle(
-                backgroundColor: Colors.red,
+        backgroundColor: Colors.white,
+        body: Container(
+          height: 200,
+          color: Colors.yellow,
+          child: Column(
+            children: [
+              const Row(
+                children: [
+                  SizedBox(
+                    width: 40,
+                    child: Text('ten'),
+                  ),
+                  Text('Hung dz'),
+                ],
               ),
+              const Row(
+                children: [
+                  SizedBox(
+                    width: 40,
+                    child: Text('tuoi'),
+                  ),
+                  Text('21'),
+                ],
               ),
-            const Text('hehe'),
-            Container(
-              // color: Colors.red,
-              color: Color(background_color_rgb),
-              child: const Row(children: [
-                Text('login'),
-                Text('sign up'),
-              ],),
-            ),
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-              Text('login'),
-              Text('sign up'),
-            ],),
-            lesson(),
-          ],
+              const Row(
+                children: [
+                  SizedBox(
+                    width: 40,
+                    child: Text('lop'),
+                  ),
+                  Text('cntt2021'),
+                ],
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  print('hung dep trai');
+                }, 
+                child: Text('contact me'),),
+              TextButton(
+                onPressed: () {},
+                child: Text('cancel')),
+            ],
+          ),
         ),
       )
     ),
@@ -65,6 +83,16 @@ class lesson extends StatelessWidget {
           Text('may con ga biet hehe'),
         ],
       ),
+    );
+  }
+}
+
+class testMarginWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return const Card(
+      margin: EdgeInsets.only(left: 8.0),
+      child: Text('hihihehe'),
     );
   }
 }
