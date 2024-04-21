@@ -2,98 +2,54 @@ import 'package:flutter/material.dart';
 import 'package:music_app/my_color.dart';
 import 'package:music_app/my_string.dart';
 import 'package:music_app/song.dart';
+import 'package:music_app/components/headerApp.dart';
+import 'package:music_app/components/footerApp.dart';
 
 void main() {
-  Song newSong = Song(1, '2134');
-  newSong.name = '123';
-
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     home: SafeArea(
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        body: Container(
-          height: 200,
-          color: Colors.yellow,
-          child: Column(
-            children: [
-              const Row(
-                children: [
-                  SizedBox(
-                    width: 40,
-                    child: Text('ten'),
-                  ),
-                  Text('Hung dz'),
-                ],
-              ),
-              const Row(
-                children: [
-                  SizedBox(
-                    width: 40,
-                    child: Text('tuoi'),
-                  ),
-                  Text('21'),
-                ],
-              ),
-              const Row(
-                children: [
-                  SizedBox(
-                    width: 40,
-                    child: Text('lop'),
-                  ),
-                  Text('cntt2021'),
-                ],
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  print('hung dep trai');
-                }, 
-                child: Text('contact me'),),
-              TextButton(
-                onPressed: () {},
-                child: Text('cancel')),
-            ],
-          ),
-        ),
-      )
+      child: mainApp()
     ),
+    routes: <String, WidgetBuilder> {
+      '/a': (BuildContext context) => headerApp(titleApp: 'navigator header'),
+      '/b': (BuildContext context) => footerApp(),
+      '/c': (BuildContext context) => mainApp(),
+    }
   ));
 }
 
-// stateless widget
-class MyWidget extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return const CircularProgressIndicator();
-  }
-}
-
-class lesson extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: [
-          Text('anh hung nghe vcl',
+class mainApp extends StatelessWidget {
+  Widget build (BuildContext context) {
+    return Scaffold(
+        backgroundColor: Colors.white,
+        body: Container(
+          // height: 200,
+          height: double.infinity,
+          color: Colors.yellow,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              const headerApp(titleApp: 'hung dep trai  vcl'),
+              Expanded(
+                child: Container(
+                  color: Colors.red,
+                  width: double.infinity,
+                  // height: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/a');
+                    },
+                    child: Text('click me'),
+                    ),
+                ),
+              ),
+              footerApp(),
+              // headerColumn(),
+            ],
           ),
-          Container(
-            height: 4,
-            color: Color(background_color_rgb),
-          ),
-          Text('may con ga biet hehe'),
-        ],
-      ),
-    );
-  }
-}
-
-class testMarginWidget extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return const Card(
-      margin: EdgeInsets.only(left: 8.0),
-      child: Text('hihihehe'),
-    );
+        ),
+      );
   }
 }
 
