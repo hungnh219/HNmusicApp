@@ -5,7 +5,7 @@
 Hướng dẫn này sẽ giúp bạn cài đặt và chạy dự án trên máy cục bộ của bạn để phát triển và kiểm thử.
 
 ### Lưu ý
-- Chạy server trước để tạo API Endpoint, đảm bảo các chức năng cho ứng dụng
+- Chạy server trước để tạo API Endpoints, đảm bảo các chức năng cho ứng dụng
 
 ### Thành viên
 - Nguyễn Hoàng Hưng - hungnh219@gmail.com
