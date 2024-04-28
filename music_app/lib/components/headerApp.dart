@@ -18,20 +18,24 @@ class headerApp extends StatelessWidget {
           Align(
             alignment: Alignment.center,
             child: Text(
-              titleApp,
+              titleApp.toUpperCase(),
+              style: const TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 24,
+              ),
             )
           ),
           Align(
             alignment: Alignment.centerRight,
             child: Container(
-              margin: EdgeInsets.only(right: 20),
+              margin: const EdgeInsets.only(right: 20),
               child:
-                ElevatedButton(
+                IconButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, '/b');
+                    print('hung dep trai vcl may con ga biet gi');
                   },
-                  child: Text('back'),
-                 )
+                  icon: Icon(Icons.alarm, color: Colors.white,))
               )
           ),
         ]

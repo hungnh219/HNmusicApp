@@ -4,17 +4,27 @@ import 'package:music_app/my_string.dart';
 import 'package:music_app/song.dart';
 import 'package:music_app/components/headerApp.dart';
 import 'package:music_app/components/footerApp.dart';
+import 'package:music_app/screens/schedule.dart';
+import 'package:music_app/screens/deadline.dart';
+import 'package:music_app/screens/profile/profile.dart';
+
+// import 'package:audioplayers/audioplayers.dart';
 
 void main() {
+  // final player = AudioPlayer();
+
+  // const String url = '../audio/o-quy.wav';
+  // player.play(DeviceFileSource('package:music_app/audio/o-quy.wav'));
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: SafeArea(
-      child: mainApp()
-    ),
+    // home: SafeArea(
+    //   child: mainApp()
+    // ),
+    home: ScheduleScreen(),
     routes: <String, WidgetBuilder> {
-      '/a': (BuildContext context) => headerApp(titleApp: 'navigator header'),
-      '/b': (BuildContext context) => footerApp(),
-      '/c': (BuildContext context) => mainApp(),
+      '/a': (BuildContext context) => const ScheduleScreen(),
+      '/b': (BuildContext context) => const ProfileScreen(),
+      '/c': (BuildContext context) => const DeadlineScreen(),
     }
   ));
 }
@@ -30,19 +40,20 @@ class mainApp extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              const headerApp(titleApp: 'hung dep trai  vcl'),
-              Expanded(
-                child: Container(
-                  color: Colors.red,
-                  width: double.infinity,
-                  // height: double.infinity,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/a');
-                    },
-                    child: Text('click me'),
-                    ),
-                ),
+              const headerApp(titleApp: 'Thời khóa biểu 1'),
+              const Expanded(
+                // child: Container(
+                //   color: Colors.red,
+                //   width: double.infinity,
+                //   // height: double.infinity,
+                //   child: ElevatedButton(
+                //     onPressed: () {
+                //       Navigator.pushNamed(context, '/a');
+                //     },
+                //     child: Text('click me'),
+                //     ),
+                // ),
+                child: ScheduleScreen(),
               ),
               footerApp(),
               // headerColumn(),
