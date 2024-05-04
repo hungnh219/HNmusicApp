@@ -8,11 +8,13 @@ import 'package:music_app/screens/schedule.dart';
 import 'package:music_app/screens/deadline.dart';
 import 'package:music_app/screens/profile/profile.dart';
 
+import 'package:music_app/data/music/music.dart' as music_data;
 // import 'package:audioplayers/audioplayers.dart';
 
 void main() {
+  var mySong = new music_data.Music('o quy', null, 'hung dep trai vcl may con ga biet gi', 'hehe');
   // final player = AudioPlayer();
-
+  print(mySong.name);
   // const String url = '../audio/o-quy.wav';
   // player.play(DeviceFileSource('package:music_app/audio/o-quy.wav'));
   runApp(MaterialApp(
@@ -78,3 +80,4 @@ class MyWidget2 extends State<MyStateFullWidget> {
     return const Text('huhu', textAlign: TextAlign.right,);
   }
 }
+
