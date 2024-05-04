@@ -7,6 +7,7 @@ import 'package:music_app/components/footerApp.dart';
 import 'package:music_app/screens/schedule.dart';
 import 'package:music_app/screens/deadline.dart';
 import 'package:music_app/screens/profile/profile.dart';
+import 'package:music_app/screens/loginscreen.darT';
 
 // import 'package:audioplayers/audioplayers.dart';
 
@@ -25,7 +26,9 @@ void main() {
       '/a': (BuildContext context) => const ScheduleScreen(),
       '/b': (BuildContext context) => const ProfileScreen(),
       '/c': (BuildContext context) => const DeadlineScreen(),
-    }
+      '/d': (BuildContext context) => const Login(),
+    },
+    initialRoute: '/d',
   ));
 }
 
