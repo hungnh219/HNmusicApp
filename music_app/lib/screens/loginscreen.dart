@@ -97,7 +97,8 @@ class Login extends StatelessWidget {
                                             backgroundColor: const Color.fromARGB(255, 198, 174, 172),
                                             textColor: Colors.white,
                                             fontSize: 16.0
-                                        )
+                                        ),
+                                  Navigator.pushNamed(context, '/a')
                                 },
                                 child: const Text('Loggin', style: TextStyle(fontSize: 28)
                               ),),

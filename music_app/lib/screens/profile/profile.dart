@@ -22,6 +22,11 @@ class ProfileScreen extends StatelessWidget {
                   Image.asset('assets/images/avt2.png')
                 ],),
               ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/d');
+                },
+                child: Text('log out')),
               footerApp(),
             ],
           ),
