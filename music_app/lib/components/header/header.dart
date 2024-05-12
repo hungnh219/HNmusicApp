@@ -4,7 +4,6 @@ import 'package:flutter/widgets.dart';
 import '../../my_color.dart';
 
 class header extends StatelessWidget {
-
   const header({Key? key, required this.titleApp}) : super(key: key);
   final String titleApp;
 
