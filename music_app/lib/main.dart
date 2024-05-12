@@ -2,15 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:music_app/my_color.dart';
 import 'package:music_app/my_string.dart';
 import 'package:music_app/song.dart';
-import 'package:music_app/components/headerApp.dart';
-import 'package:music_app/components/footerApp.dart';
-import 'package:music_app/screens/schedule.dart';
-import 'package:music_app/screens/deadline.dart';
-import 'package:music_app/screens/profile/profile.dart';
+import 'package:music_app/components/header/header.dart';
+import 'package:music_app/components/footer/footer.dart';
+import 'package:music_app/screens/home/home.dart';
+import 'package:music_app/screens/search/search.dart';
+import 'package:music_app/screens/pomodoro/pomodoro.dart';
 import 'package:music_app/screens/loginscreen.darT';
 
 import 'package:music_app/data/music/music.dart' as music_data;
-// import 'package:audioplayers/audioplayers.dart';
 
 void main() {
   var mySong = new music_data.Music('o quy', null, 'hung dep trai vcl may con ga biet gi', 'hehe');
@@ -18,19 +17,9 @@ void main() {
   print(mySong.name);
   // const String url = '../audio/o-quy.wav';
   // player.play(DeviceFileSource('package:music_app/audio/o-quy.wav'));
-  runApp(MaterialApp(
+  runApp(const MaterialApp(
     debugShowCheckedModeBanner: false,
-    // home: SafeArea(
-    //   child: mainApp()
-    // ),
-    home: ScheduleScreen(),
-    routes: <String, WidgetBuilder> {
-      '/a': (BuildContext context) => const ScheduleScreen(),
-      '/b': (BuildContext context) => const ProfileScreen(),
-      '/c': (BuildContext context) => const DeadlineScreen(),
-      '/d': (BuildContext context) => const Login(),
-    },
-    initialRoute: '/d',
+    home: HomeScreen(),
   ));
 }
 
@@ -45,7 +34,7 @@ class mainApp extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              const headerApp(titleApp: 'Thời khóa biểu 1'),
+              const header(titleApp: 'Thời khóa biểu 1'),
               const Expanded(
                 // child: Container(
                 //   color: Colors.red,
@@ -58,9 +47,9 @@ class mainApp extends StatelessWidget {
                 //     child: Text('click me'),
                 //     ),
                 // ),
-                child: ScheduleScreen(),
+                child: HomeScreen(),
               ),
-              footerApp(),
+              footer(),
               // headerColumn(),
             ],
           ),

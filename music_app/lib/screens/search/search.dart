@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import '../components/headerApp.dart';
-import '../components/footerApp.dart';
+import '../../components/header/header.dart';
+import '../../components/footer/footer.dart';
 
-class DeadlineScreen extends StatelessWidget {
-  const DeadlineScreen({Key? key}) : super(key:key);
+class SearchScreen extends StatelessWidget {
+  const SearchScreen({Key? key}) : super(key:key);
 
   Widget build(BuildContext context) {
     return SafeArea(
@@ -15,11 +15,11 @@ class DeadlineScreen extends StatelessWidget {
           // color: Colors.red,
           child: Column(
             children: [
-              headerApp(titleApp: 'Deadlines'),
+              header(titleApp: 'Deadlines'),
               Expanded(
                 child: Text('IS208.O23'),
               ),
-              footerApp(),
+              footer(),
             ],
           ),
         ),
@@ -35,7 +35,7 @@ class TestDeadlineScreen extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: SafeArea(
-        child: DeadlineScreen()
+        child: SearchScreen()
       )
     );
   }

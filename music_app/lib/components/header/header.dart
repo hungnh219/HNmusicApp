@@ -1,24 +1,47 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../my_color.dart';
+import 'package:flutter/widgets.dart';
+import '../../my_color.dart';
 
-class headerApp extends StatelessWidget {
+class header extends StatelessWidget {
 
-  const headerApp({Key? key, required this.titleApp}) : super(key: key);
+  const header({Key? key, required this.titleApp}) : super(key: key);
   final String titleApp;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 64,
+      height: 48,
       width: double.infinity,
-      color: const Color(header_color),
+      // color: const Color(header_color),
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.bottomRight,
+          end: Alignment.topLeft,
+          colors: <Color> [
+            Color(0xFF874CCC),
+            Color(0xFFC65BCF),
+            Color(0xFFF27BBD),
+          ])
+      ),
       alignment: Alignment.center,
       child: Stack(
         children: [
+          // upgrade button
+          // Align(
+          //   alignment: Alignment(-0.85, 0),
+          //   child: SizedBox(
+          //     height: 24,
+          //     child: ElevatedButton(
+          //       onPressed: () {},
+          //       child: Text('upgrade')
+          //     )
+          //   ),
+          // ),
           Align(
             alignment: Alignment.center,
             child: Text(
-              titleApp.toUpperCase(),
+              titleApp,
               style: const TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
@@ -35,7 +58,7 @@ class headerApp extends StatelessWidget {
                   onPressed: () {
                     print('hung dep trai vcl may con ga biet gi');
                   },
-                  icon: Icon(Icons.alarm, color: Colors.white,))
+                  icon: Icon(Icons.person, color: Colors.white,))
               )
           ),
         ]
@@ -51,7 +74,7 @@ class headerColumn extends StatelessWidget{
     return Column(
       children: titles.map((title) {
         return Expanded(
-          child: headerApp(titleApp: title),
+          child: header(titleApp: title),
         );
       }).toList()
     );

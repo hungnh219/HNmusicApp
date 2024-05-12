@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-class Login extends StatelessWidget {
-  const Login({super.key});
+
+import 'package:music_app/screens/home/home.dart';
+
+class LoginScreen extends StatelessWidget {
+  const LoginScreen({Key? key}) : super(key:key);
 
   @override
   Widget build(BuildContext context) {
@@ -98,7 +101,10 @@ class Login extends StatelessWidget {
                                             textColor: Colors.white,
                                             fontSize: 16.0
                                         ),
-                                  Navigator.pushNamed(context, '/a')
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) => const HomeScreen())  
+                                  )
                                 },
                                 child: const Text('Loggin', style: TextStyle(fontSize: 28)
                               ),),

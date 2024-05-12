@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import '../components/headerApp.dart';
-import '../components/footerApp.dart';
+import '../../components/header/header.dart';
+import '../../components/footer/footer.dart';
 
-class ScheduleScreen extends StatelessWidget {
-  const ScheduleScreen({Key? key}) : super(key:key);
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({Key? key}) : super(key:key);
 
   Widget build(BuildContext context) {
     return SafeArea(
@@ -15,8 +15,8 @@ class ScheduleScreen extends StatelessWidget {
           // color: Colors.red,
           child: Column(
             children: [
-              headerApp(titleApp: 'Thời khóa biểu'),
-              Expanded(
+              const header(titleApp: 'Home'),
+              const Expanded(
                 child: Column(children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -42,7 +42,7 @@ class ScheduleScreen extends StatelessWidget {
                   ),
                 ],)
               ),
-              footerApp(),
+              footer(),
             ],
           ),
         ),
