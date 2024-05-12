@@ -5,9 +5,7 @@ import 'package:music_app/song.dart';
 import 'package:music_app/components/header/header.dart';
 import 'package:music_app/components/footer/footer.dart';
 import 'package:music_app/screens/home/home.dart';
-import 'package:music_app/screens/search/search.dart';
-import 'package:music_app/screens/pomodoro/pomodoro.dart';
-import 'package:music_app/screens/loginscreen.darT';
+import 'package:music_app/screens/library/library.dart';
 
 import 'package:music_app/data/music/music.dart' as music_data;
 
@@ -17,7 +15,7 @@ void main() {
   print(mySong.name);
   // const String url = '../audio/o-quy.wav';
   // player.play(DeviceFileSource('package:music_app/audio/o-quy.wav'));
-  runApp(const MaterialApp(
+  runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     home: HomeScreen(),
   ));
@@ -35,7 +33,7 @@ class mainApp extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               const header(titleApp: 'Thời khóa biểu 1'),
-              const Expanded(
+              Expanded(
                 // child: Container(
                 //   color: Colors.red,
                 //   width: double.infinity,

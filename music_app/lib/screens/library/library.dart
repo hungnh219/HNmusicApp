@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:music_app/screens/playlist/playlist.dart';
 import '../../components/header/header.dart';
 import '../../components/footer/footer.dart';
 
@@ -19,6 +20,14 @@ class LibraryScreen extends StatelessWidget {
               Expanded(
                 child: Text('IS208.O23'),
               ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => PlaylistScreen())
+                  );
+                },
+                child: Text('chill chill')),
               footer(),
             ],
           ),

@@ -103,7 +103,7 @@ class LoginScreen extends StatelessWidget {
                                         ),
                                   Navigator.push(
                                     context,
-                                    MaterialPageRoute(builder: (context) => const HomeScreen())  
+                                    MaterialPageRoute(builder: (context) => HomeScreen())  
                                   )
                                 },
                                 child: const Text('Loggin', style: TextStyle(fontSize: 28)
