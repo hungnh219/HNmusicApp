@@ -5,14 +5,8 @@ import 'package:music_app/song.dart';
 import 'package:music_app/components/header/header.dart';
 import 'package:music_app/components/footer/footer.dart';
 import 'package:music_app/screens/home/home.dart';
-import 'package:music_app/screens/library/library.dart';
-
-import 'package:music_app/data/music/music.dart' as music_data;
-
 void main() {
-  var mySong = new music_data.Music('o quy', null, 'hung dep trai vcl may con ga biet gi', 'hehe');
   // final player = AudioPlayer();
-  print(mySong.name);
   // const String url = '../audio/o-quy.wav';
   // player.play(DeviceFileSource('package:music_app/audio/o-quy.wav'));
   runApp(MaterialApp(
