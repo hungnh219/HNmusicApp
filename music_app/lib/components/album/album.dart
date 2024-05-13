@@ -32,7 +32,7 @@ class Album extends StatelessWidget {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const PlaylistScreen())
+          MaterialPageRoute(builder: (context) => PlaylistScreen())
         );
       },
     );
