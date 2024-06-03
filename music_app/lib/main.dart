@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:music_app/my_color.dart';
 import 'package:music_app/my_string.dart';
-import 'package:music_app/song.dart';
 import 'package:music_app/components/header/header.dart';
 import 'package:music_app/components/footer/footer.dart';
 import 'package:music_app/screens/home/home.dart';
 void main() {
-  // final player = AudioPlayer();
-  // const String url = '../audio/o-quy.wav';
-  // player.play(DeviceFileSource('package:music_app/audio/o-quy.wav'));
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     home: HomeScreen(),
