@@ -7,11 +7,13 @@ import '../../components/header/header.dart';
 import '../../components/footer/footer.dart';
 
 import 'package:music_app/screens/playlist/playlist.dart';
+import 'package:music_app/models/song.dart';
+import 'package:music_app/models/album.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key:key);
-  final List<StatelessWidget> recentlyPlaylist = <StatelessWidget>[Album(title: 'hehe'), Album(title: 'den vau'), Album(title: 'son tung'), Album(title: 'jack')];
-  final List<StatelessWidget> likedPlaylist = <StatelessWidget>[Album(title: 'mck'), Album(title: 'wxrdie'), Album(title: 'tlinh')];
+  final List<StatelessWidget> recentlyPlaylist = <StatelessWidget>[Album(alb: den_vau_album), Album(alb: random_album), Album(alb: den_vau_album)];
+  final List<StatelessWidget> likedPlaylist = <StatelessWidget>[Album(alb: den_vau_album), Album(alb: random_album), Album(alb: den_vau_album), Album(alb: random_album)];
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
@@ -36,59 +38,3 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-
-// class TestPlayList extends StatelessWidget {
-//   const TestPlayList({Key? key, required this.title}) : super(key: key) ;
-//   final String title;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return InkWell(
-//       child: Column(
-//       crossAxisAlignment: CrossAxisAlignment.start,
-//       children: [
-//       Text(title.toUpperCase()),
-//       Image.asset(
-//         'assets/images/avt2.png',
-//         width: 200,
-//         height: 200,
-//       )
-//     ],),
-//       onTap: () {
-//         Navigator.push(
-//           context,
-//           MaterialPageRoute(builder: (context) => const PlaylistScreen())
-//         );
-//       },
-//     );
-//   }
-// }
-
-// class TestListView extends StatelessWidget {
-//   final List<String> strList = <String>['anh', 'hung', 'dep', 
-//                                         'tra', 'vcl', 'may', 
-//                                         'con', 'ga', 'biet', 'gi', 
-//                                         'con', 'ga', 'biet', 'gi', 
-//                                         'con', 'ga', 'biet', 'gi', 
-//                                         'con', 'ga', 'biet', 'gi', 
-//                                        ];
-//   final List<StatelessWidget> testList = <StatelessWidget>[TestPlayList(title: 'hung'), TestPlayList(title: 'hehe'), TestPlayList(title: 'hehe'), TestPlayList(title: 'hehe'), TestPlayList(title: 'hehe')];
-//   @override
-//   Widget build(BuildContext context) {
-//     return Expanded(
-//       // height: 200,
-//       child: ListView.separated(
-//         scrollDirection: Axis.horizontal,
-//         itemCount: testList.length,
-//         itemBuilder: (context, index) {
-//           return Container(
-//             // height: 10,
-//             color: Colors.red,
-//             child: testList[index]
-//           );
-//         },
-//         separatorBuilder: (context, index) => Container(height: 20),
-//       ),
-//     );
-//   }
-// }

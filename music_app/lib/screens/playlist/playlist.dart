@@ -7,6 +7,8 @@ import '../../components/footer/footer.dart';
 import 'package:music_app/components/backButton/backButton.dart';
 import 'package:audioplayers/audioplayers.dart';
 
+import 'package:music_app/models/song.dart';
+
 class PlaylistScreen extends StatelessWidget {
   PlaylistScreen({Key? key}) : super(key:key);
 
@@ -30,13 +32,25 @@ class PlaylistScreen extends StatelessWidget {
                 onPressed: () {
                   playSound();
                 },
-                child: Text('play music')
+                child: Text('play music - o quy')
               ),
               ElevatedButton(
                 onPressed: () {
                   stopSound();
                 },
-                child: Text('stop music')
+                child: Text('stop music - o quy')
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  playSound1();
+                },
+                child: Text('play music - suyt nua thi')
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  stopSound();
+                },
+                child: Text('stop music - suyt nua thi')
               ),
               Expanded(
                 child: Text('album'),
@@ -52,7 +66,11 @@ class PlaylistScreen extends StatelessWidget {
   AudioPlayer audioPlayer = AudioPlayer();
 
   Future<void> playSound() async {
-    String soundPath = "audio/o-quy.mp3";
+    String soundPath = "audios/o-quy.mp3";
+    await audioPlayer.play(AssetSource(soundPath));
+  }
+  Future<void> playSound1() async {
+    String soundPath = "audios/suyt-nua-thi.mp3";
     await audioPlayer.play(AssetSource(soundPath));
   }
   Future<void> stopSound() async {

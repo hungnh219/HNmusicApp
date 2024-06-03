@@ -17,7 +17,7 @@ class MusicList extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
         Padding(
-          padding: EdgeInsets.only(left: 8),  
+          padding: EdgeInsets.only(left: 0),  
           child: Text(
             title,
             style: TextStyle(
