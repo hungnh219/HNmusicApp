@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:music_app/models/album.dart';
 import '../../components/header/header.dart';
 import '../../components/footer/footer.dart';
 
@@ -10,10 +11,14 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:music_app/models/song.dart';
 
 class PlaylistScreen extends StatelessWidget {
-  PlaylistScreen({Key? key}) : super(key:key);
+  PlaylistScreen({Key? key, required this.alb}) : super(key:key);
 
+  final album alb;
   // final player = AssetsAudioPlayer();
   Widget build(BuildContext context) {
+    print('hehe');
+    print(context);
+
     return SafeArea(
       child: Scaffold(
         body: Container(
@@ -53,7 +58,15 @@ class PlaylistScreen extends StatelessWidget {
                 child: Text('stop music - suyt nua thi')
               ),
               Expanded(
-                child: Text('album'),
+                child: Text(alb.albumName),
+              ),
+              Expanded(
+                child: ListView.separated(
+                  itemBuilder: (context, index) {
+                    return Text(alb.songs[index].songName);
+                  },
+                  separatorBuilder: (context, index) => Container(height: 0,),
+                  itemCount: alb.songs.length),
               ),
               footer()
             ],
