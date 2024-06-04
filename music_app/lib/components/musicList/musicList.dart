@@ -5,9 +5,10 @@ import 'package:music_app/components/album/album.dart';
 
 class MusicList extends StatelessWidget {
   MusicList({Key? key, required this.title, required this.albumList}) : super(key: key);
-  final String title;
 
+  final String title;
   final List<StatelessWidget> albumList;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -37,7 +38,7 @@ class MusicList extends StatelessWidget {
                 child: albumList[index]
               );
             },
-            separatorBuilder: (context, index) => Container(height: 0,),
+            separatorBuilder: (context, index) => Container(height: 0),
           ),
         ),
       ],),

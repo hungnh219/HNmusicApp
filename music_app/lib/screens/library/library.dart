@@ -22,10 +22,10 @@ class LibraryScreen extends StatelessWidget {
               ),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => PlaylistScreen())
-                  );
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(builder: (context) => PlaylistScreen())
+                  // );
                 },
                 child: Text('chill chill')),
               footer(),

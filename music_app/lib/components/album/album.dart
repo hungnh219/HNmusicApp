@@ -11,7 +11,9 @@ import 'package:music_app/models/album.dart';
 
 class Album extends StatelessWidget {
   const Album({Key? key, required this.alb}) : super(key: key);
+
   final album alb;
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -20,28 +22,10 @@ class Album extends StatelessWidget {
       children: [
       Stack(
         children: [
-
-          // Padding(
-          //   padding: EdgeInsets.all(10),
-          //   child: Image.asset(
-          //     alb.albumImage,
-          //     width: 120,
-          //     height: 120,
-          //     fit: BoxFit.fitHeight,
-          //     ),
-          // ),
           Padding(
             padding: EdgeInsets.all(8),
             child: BlurImage(imagePath: alb.albumImage),
           ),
-          // Positioned.fill(
-          //   child: BackdropFilter(
-          //     filter: ImageFilter.blur(sigmaX: 2, sigmaY: 2),
-          //     child: Container(
-          //       color: Colors.transparent,
-          //     )
-          //   ),
-          // ),
 
           Container(
             decoration: BoxDecoration(
@@ -70,7 +54,7 @@ class Album extends StatelessWidget {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => PlaylistScreen())
+          MaterialPageRoute(builder: (context) => PlaylistScreen(alb: alb))
         );
       },
     );
