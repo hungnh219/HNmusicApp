@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:music_app/models/album.dart';
+import 'package:music_app/screens/songDetail/songDetail.dart';
 import '../../components/header/header.dart';
 import '../../components/footer/footer.dart';
 
@@ -57,13 +58,43 @@ class PlaylistScreen extends StatelessWidget {
                 },
                 child: Text('stop music - suyt nua thi')
               ),
-              Expanded(
-                child: Text(alb.albumName),
-              ),
+              // Expanded(
+              //   child: Text(alb.albumName),
+              // ),
               Expanded(
                 child: ListView.separated(
                   itemBuilder: (context, index) {
-                    return Text(alb.songs[index].songName);
+                    return InkWell(
+                      onTap: () => {
+                        print('hung dep trai vcl'),
+                        print(alb.songs[index]),
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => SongDetailScreen(song: alb.songs[index]))
+                        )
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(8, 8, 8, 8),
+                        child: Row(
+                          children: [
+                            Container(
+                              // width: double.infinity,
+                              decoration: BoxDecoration(
+                                border: Border.all(color: Colors.black)
+                              ),
+                              child: Image.asset(
+                                alb.songs[index].image,
+                                height: 40,
+                                width: 40,
+                              ),
+                            ),
+                            SizedBox(width: 8),
+                            Text(
+                              alb.songs[index].songName
+                            )
+                        ],),
+                      ),
+                    );
                   },
                   separatorBuilder: (context, index) => Container(height: 0,),
                   itemCount: alb.songs.length),
