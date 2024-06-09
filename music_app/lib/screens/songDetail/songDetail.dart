@@ -23,6 +23,16 @@ class SongDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        // floatingActionButton: Container(
+        //   width: double.infinity,
+        //   color: Colors.red,
+        //   child: Row(
+        //     children: [
+        //       Text('floating action button'),
+        //       // BackButton()
+        //     ],
+        //   )
+        // ),
         body: Container(
           child: Column(
             children: [
@@ -31,20 +41,62 @@ class SongDetailScreen extends StatelessWidget {
                 onPressed: () {
                   playMusic(song.audioPath);
                 },
-                child: Text('play')),
+                child: Text('play')
+              ),
               ElevatedButton(
                 onPressed: () {
                   stopMusic();
                 },
-                child: Text('stop')),
+                child: Text('stop')
+              ),
               ElevatedButton(
                 onPressed: () {
                 },
-                child: BackButton())
+                child: BackButton()
+              ),
+              PlusOneButton(),
             ],
           ),
         )
       ) 
+    );
+  }
+}
+
+class PlusOneButton extends StatefulWidget {
+  PlusOneButton({super.key});
+
+  @override
+  State<PlusOneButton> createState() => _PlusOneButtonState();
+}
+
+class _PlusOneButtonState extends State<PlusOneButton> {
+  int counter = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        IconButton(
+          onPressed: () {
+            setState(() {
+              counter++;
+              print(counter);
+            });
+          },
+          icon: Icon(Icons.add),
+        ),
+        IconButton(
+          onPressed: () {
+            setState(() {
+              counter--;
+              print(counter);
+            });
+          },
+          icon: Icon(Icons.dashboard)
+        ),
+        Text(counter.toString())
+      ],
     );
   }
 }
