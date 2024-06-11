@@ -33,70 +33,94 @@ class SongDetailScreen extends StatelessWidget {
         //     ],
         //   )
         // ),
-        body: Container(
-          child: Column(
-            children: [
-              Text(song.songName + ' [' + song.artistName + ']'),
-              ElevatedButton(
-                onPressed: () {
-                  playMusic(song.audioPath);
-                },
-                child: Text('play')
+        body: Stack(
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(song.image),
+                  fit: BoxFit.fitHeight
+                )
               ),
-              ElevatedButton(
-                onPressed: () {
-                  stopMusic();
-                },
-                child: Text('stop')
+              child: null,
+            ),
+            Container(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      BackButton(),
+
+                      Column(
+                        children: [
+                          Text(song.songName),
+                          Text(song.artistName),
+                        ],
+                      ),
+
+                      IconButton(
+                        onPressed: () {},
+                        icon: Icon(Icons.more_vert)
+                      ),
+                    ],
+                  ),
+                  // Text(song.songName + ' [' + song.artistName + ']'),
+
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      IconButton(
+                        onPressed: () {},
+                        icon: Icon(Icons.arrow_back)
+                      ),
+
+                      IconButton(
+                        onPressed: () {
+                          playMusic(song.audioPath);
+                        },
+                        icon: Icon(Icons.play_circle)
+                      ),
+
+                      IconButton(
+                        onPressed: () {
+                          stopMusic();
+                        },
+                        icon: Icon(Icons.pause_circle)
+                      ),
+
+                      IconButton(
+                        onPressed: () {},
+                        icon: Icon(Icons.arrow_forward)
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      IconButton(
+                        onPressed: () {},
+                        icon: Icon(Icons.heart_broken)
+                      ),
+
+                      IconButton(
+                        onPressed: () {},
+                        icon: Icon(Icons.loop)
+                      ),
+               
+                      IconButton(
+                        onPressed: () {},
+                        icon: Icon(Icons.album)
+                      ),
+                    ],
+                  ),
+                ],
               ),
-              ElevatedButton(
-                onPressed: () {
-                },
-                child: BackButton()
-              ),
-              PlusOneButton(),
-            ],
-          ),
+            ),
+          ]
         )
       ) 
-    );
-  }
-}
-
-class PlusOneButton extends StatefulWidget {
-  PlusOneButton({super.key});
-
-  @override
-  State<PlusOneButton> createState() => _PlusOneButtonState();
-}
-
-class _PlusOneButtonState extends State<PlusOneButton> {
-  int counter = 0;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        IconButton(
-          onPressed: () {
-            setState(() {
-              counter++;
-              print(counter);
-            });
-          },
-          icon: Icon(Icons.add),
-        ),
-        IconButton(
-          onPressed: () {
-            setState(() {
-              counter--;
-              print(counter);
-            });
-          },
-          icon: Icon(Icons.dashboard)
-        ),
-        Text(counter.toString())
-      ],
     );
   }
 }
