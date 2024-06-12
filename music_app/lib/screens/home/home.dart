@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:music_app/components/album/album.dart';
 import 'package:music_app/components/musicList/musicList.dart';
+import 'package:music_app/components/songBar/song_bar.dart';
 import '../../components/header/header.dart';
 import '../../components/footer/footer.dart';
 
@@ -26,12 +27,35 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             children: [
               const header(titleApp: 'Home'),
+              // Expanded(
+              //   child: Column(children: [
+              //     MusicList(title: 'Recently Played', albumList: recentlyPlaylist),
+              //     MusicList(title: 'Liked', albumList: likedPlaylist),
+              //   ],)
+              // ),
               Expanded(
-                child: Column(children: [
-                  MusicList(title: 'Recently Played', albumList: recentlyPlaylist),
-                  MusicList(title: 'Liked', albumList: likedPlaylist),
-                ],)
+                child: Stack(
+                  children: [
+                    ListView(
+                      children: [
+                        MusicList(title: 'Recently Played', albumList: recentlyPlaylist),
+                        MusicList(title: 'Liked', albumList: likedPlaylist),
+                        MusicList(title: 'Liked', albumList: likedPlaylist),
+                        MusicList(title: 'Liked', albumList: likedPlaylist),
+                        MusicList(title: 'Liked', albumList: likedPlaylist),
+                      ],
+                    ),
+
+                    Positioned(
+                      // top: 30,
+                      // right: 20,
+                      bottom: 10,
+                      child: SongBar()
+                    ),
+                  ]
+                ),
               ),
+              // SongBar(),
               footer(),
             ],
           ),

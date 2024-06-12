@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:music_app/components/songBar/song_bar.dart';
 import '../../components/header/header.dart';
 import '../../components/footer/footer.dart';
 
@@ -17,7 +18,21 @@ class SearchScreen extends StatelessWidget {
             children: [
               header(titleApp: 'Deadlines'),
               Expanded(
-                child: Text('IS208.O23'),
+                child: Stack(
+                  children: [
+                    ListView(
+                      children: [
+                      ],
+                    ),
+
+                    Positioned(
+                      // top: 30,
+                      // right: 20,
+                      bottom: 10,
+                      child: SongBar()
+                    ),
+                  ]
+                ),
               ),
               footer(),
             ],

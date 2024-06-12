@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:music_app/components/songBar/song_bar.dart';
 import 'package:music_app/models/album.dart';
 import 'package:music_app/screens/songDetail/songDetail.dart';
 import '../../components/header/header.dart';
@@ -61,44 +62,67 @@ class PlaylistScreen extends StatelessWidget {
               // Expanded(
               //   child: Text(alb.albumName),
               // ),
+              // Hero(
+              //   tag: 'songBar',
+              //   child: Container(
+              //     height: 120,
+              //     decoration: BoxDecoration(
+              //       color: Colors.red
+              //     ),
+              //     child: Text('hehehe'),
+              //   )
+              // ),
               Expanded(
-                child: ListView.separated(
-                  itemBuilder: (context, index) {
-                    return InkWell(
-                      onTap: () => {
-                        print('hung dep trai vcl'),
-                        print(alb.songs[index]),
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => SongDetailScreen(song: alb.songs[index]))
-                        )
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(8, 8, 8, 8),
-                        child: Row(
-                          children: [
-                            Container(
-                              // width: double.infinity,
-                              decoration: BoxDecoration(
-                                border: Border.all(color: Colors.black)
+                child: Stack(
+                  children: [
+                    ListView.separated(
+                    itemBuilder: (context, index) {
+                      return InkWell(
+                        onTap: () => {
+                          print('hung dep trai vcl'),
+                          print(alb.songs[index]),
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => SongDetailScreen(song: alb.songs[index]))
+                          )
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(8, 8, 8, 8),
+                          child: Row(
+                            children: [
+                              Container(
+                                // width: double.infinity,
+                                decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.black)
+                                ),
+                                child: Image.asset(
+                                  alb.songs[index].image,
+                                  height: 40,
+                                  width: 40,
+                                ),
                               ),
-                              child: Image.asset(
-                                alb.songs[index].image,
-                                height: 40,
-                                width: 40,
-                              ),
-                            ),
-                            SizedBox(width: 8),
-                            Text(
-                              alb.songs[index].songName
-                            )
-                        ],),
-                      ),
-                    );
-                  },
-                  separatorBuilder: (context, index) => Container(height: 0,),
-                  itemCount: alb.songs.length),
+                              SizedBox(width: 8),
+                              Text(
+                                alb.songs[index].songName
+                              )
+                          ],),
+                        ),
+                      );
+                    },
+                    separatorBuilder: (context, index) => Container(height: 0,),
+                    itemCount: alb.songs.length
+                    ),
+
+                    Positioned(
+                      // top: 30,
+                      // right: 20,
+                      bottom: 10,
+                      child: SongBar()
+                    ),
+                  ],
+                ),
               ),
+              // SongBar(),
               footer()
             ],
           ),
