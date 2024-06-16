@@ -2,11 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-import 'package:music_app/screens/login/login.dart';
-import 'package:music_app/screens/home/home.dart';
-import 'package:music_app/screens/pomodoro/pomodoro.dart';
-import 'package:music_app/screens/search/search.dart';
-import 'package:music_app/screens/library/library.dart';
+import 'package:music_app/screens/login/login_page.dart';
+import 'package:music_app/screens/home/home_page.dart';
+import 'package:music_app/screens/pomodoro/pomodoro_page.dart';
+import 'package:music_app/screens/search/search_page.dart';
+import 'package:music_app/screens/library/library_page.dart';
 
 class footer extends StatelessWidget {
   Widget build(BuildContext context) {

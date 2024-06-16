@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:music_app/components/songBar/song_bar.dart';
-import '../../components/header/header.dart';
-import '../../components/footer/footer.dart';
+import 'package:music_app/widgets/songBar/song_bar.dart';
+import '../../widgets/header/header.dart';
+import '../../widgets/footer/footer.dart';
 
 class SearchScreen extends StatelessWidget {
   const SearchScreen({Key? key}) : super(key:key);

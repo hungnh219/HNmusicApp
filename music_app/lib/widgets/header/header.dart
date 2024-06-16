@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import '../../my_color.dart';
+import '../../utils/theme/my_color.dart';
 
 class header extends StatelessWidget {
   const header({Key? key, required this.titleApp}) : super(key: key);

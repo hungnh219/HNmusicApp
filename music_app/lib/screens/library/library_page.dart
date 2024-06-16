@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:music_app/screens/playlist/playlist.dart';
-import '../../components/header/header.dart';
-import '../../components/footer/footer.dart';
+import 'package:music_app/screens/playlist/playlist_page.dart';
+import '../../widgets/header/header.dart';
+import '../../widgets/footer/footer.dart';
 
 class LibraryScreen extends StatelessWidget {
   const LibraryScreen({Key? key}) : super(key:key);

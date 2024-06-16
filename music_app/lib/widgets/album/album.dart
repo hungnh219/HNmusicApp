@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:music_app/models/album.dart';
 
-import 'package:music_app/screens/playlist/playlist.dart';
+import 'package:music_app/screens/playlist/playlist_page.dart';
 import 'package:music_app/models/song.dart';
 import 'package:music_app/models/album.dart';
 

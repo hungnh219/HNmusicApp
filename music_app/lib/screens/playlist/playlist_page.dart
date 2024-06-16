@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:music_app/components/songBar/song_bar.dart';
+import 'package:music_app/widgets/songBar/song_bar.dart';
 import 'package:music_app/models/album.dart';
-import 'package:music_app/screens/songDetail/songDetail.dart';
-import '../../components/header/header.dart';
-import '../../components/footer/footer.dart';
+import 'package:music_app/screens/songDetail/song_detail_page.dart';
+import '../../widgets/header/header.dart';
+import '../../widgets/footer/footer.dart';
 
-import 'package:music_app/components/backButton/backButton.dart';
+import 'package:music_app/widgets/backButton/back_button.dart';
 import 'package:audioplayers/audioplayers.dart';
 
 import 'package:music_app/models/song.dart';

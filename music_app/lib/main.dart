@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:music_app/my_color.dart';
-import 'package:music_app/my_string.dart';
-import 'package:music_app/components/header/header.dart';
-import 'package:music_app/components/footer/footer.dart';
-import 'package:music_app/screens/home/home.dart';
+import 'package:music_app/utils/theme/my_color.dart';
+import 'package:music_app/utils/theme/my_string.dart';
+import 'package:music_app/widgets/header/header.dart';
+import 'package:music_app/widgets/footer/footer.dart';
+import 'package:music_app/screens/home/home_page.dart';
 void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,

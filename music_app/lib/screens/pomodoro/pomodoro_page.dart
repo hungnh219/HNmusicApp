@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import '../../components/header/header.dart';
-import '../../components/footer/footer.dart';
-import '../login/login.dart';
+import '../../widgets/header/header.dart';
+import '../../widgets/footer/footer.dart';
+import '../login/login_page.dart';
 
 class PomodoroScreen extends StatelessWidget {
   const PomodoroScreen({Key? key}) : super(key:key);

@@ -2,7 +2,7 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'package:music_app/components/backButton/backButton.dart';
+import 'package:music_app/widgets/backButton/back_button.dart';
 import 'package:music_app/models/song.dart';
 import 'package:music_app/screens/songDetail/widgets/play_pause_button.dart';
 

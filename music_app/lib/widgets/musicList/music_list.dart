@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:music_app/components/album/album.dart';
+import 'package:music_app/widgets/album/album.dart';
 
 class MusicList extends StatelessWidget {
   MusicList({Key? key, required this.title, required this.albumList}) : super(key: key);
