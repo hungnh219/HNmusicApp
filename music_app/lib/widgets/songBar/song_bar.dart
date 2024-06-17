@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:music_app/main.dart';
 import 'package:music_app/models/song.dart';
+import 'package:provider/provider.dart';
 
 class SongBar extends StatefulWidget {
   const SongBar({super.key});
@@ -51,7 +53,7 @@ class _SongBarState extends State<SongBar> {
                       
                     Expanded(
                       flex: 4,
-                      child: Text('hungdsnfsdlfdsfsdfsfsfsfsfsdlkfjdsljfklsdjlfasdjl;fkdjkfjs')
+                      child: Text(context.watch<SongProvider>().getName)
                     ),
                       
                     IconButton(
