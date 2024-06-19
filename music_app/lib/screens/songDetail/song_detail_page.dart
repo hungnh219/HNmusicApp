@@ -110,6 +110,8 @@ class SongDetailScreen extends StatelessWidget {
                       ),
                     ],
                   ),
+                  
+                  // PlayPauseButton(musicPath: song.audioPath),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -131,7 +133,6 @@ class SongDetailScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-
                   // Hero(tag: 'songBar', child: Text('check'))
                 ],
               ),

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:music_app/main.dart';
 import 'package:music_app/models/song.dart';
+import 'package:music_app/screens/songDetail/song_detail_page.dart';
 import 'package:provider/provider.dart';
 
 class SongBar extends StatefulWidget {
@@ -25,8 +26,16 @@ class _SongBarState extends State<SongBar> {
           child: Material(
             color: Colors.black.withOpacity(0),
             child: InkWell(
-              onTap: () {
-                // print('123321');
+              onTap: () => {
+                // Song song = context.watch<SongProvider>().getSong;
+
+                print('123321'),
+                print('123321'),
+                // print(song);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SongDetailScreen(song: context.watch<SongProvider>().getSong))
+                )
               },
               child: Container(
               // width: double.infinity,
