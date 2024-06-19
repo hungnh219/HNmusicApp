@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:music_app/main.dart';
 import 'package:music_app/widgets/songBar/song_bar.dart';
 import 'package:music_app/models/album.dart';
 import 'package:music_app/screens/songDetail/song_detail_page.dart';
+import 'package:provider/provider.dart';
 import '../../widgets/header/header.dart';
 import '../../widgets/footer/footer.dart';
 
@@ -59,19 +61,6 @@ class PlaylistScreen extends StatelessWidget {
                 },
                 child: Text('stop music - suyt nua thi')
               ),
-              // Expanded(
-              //   child: Text(alb.albumName),
-              // ),
-              // Hero(
-              //   tag: 'songBar',
-              //   child: Container(
-              //     height: 120,
-              //     decoration: BoxDecoration(
-              //       color: Colors.red
-              //     ),
-              //     child: Text('hehehe'),
-              //   )
-              // ),
               Expanded(
                 child: Stack(
                   children: [
@@ -81,10 +70,12 @@ class PlaylistScreen extends StatelessWidget {
                         onTap: () => {
                           print('hung dep trai vcl'),
                           print(alb.songs[index]),
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => SongDetailScreen(song: alb.songs[index]))
-                          )
+                          // Navigator.push(
+                          //   context,
+                          //   MaterialPageRoute(builder: (context) => SongDetailScreen(song: alb.songs[index]))
+                          // )
+                          // context.watch<SongProvider>().changeSong(alb.songs[index]),
+                          Provider.of<SongProvider>(context, listen: false).changeSong(alb.songs[index])
                         },
                         child: Padding(
                           padding: const EdgeInsets.fromLTRB(8, 8, 8, 8),
