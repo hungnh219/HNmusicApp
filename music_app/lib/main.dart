@@ -55,10 +55,20 @@ void main() {
 
 class SongProvider extends ChangeNotifier {
   Song _song = o_quy;
-
+  bool _isPlay = false;
+  
   String get getName => _song.songName;
 
   Song get getSong => _song;
+
+  String get getSongPath => _song.audioPath;
+  
+  bool get isPlay => _isPlay;
+
+  void switchPlayButton() {
+    this._isPlay = !_isPlay;
+    notifyListeners();
+  }
 
   void changeSong(Song newSong) {
     this._song = newSong;

@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:music_app/main.dart';
 import 'package:music_app/models/song.dart';
 import 'package:music_app/screens/songDetail/song_detail_page.dart';
+import 'package:music_app/screens/songDetail/widgets/play_pause_button.dart';
 import 'package:provider/provider.dart';
 
 class SongBar extends StatefulWidget {
@@ -50,20 +51,25 @@ class _SongBarState extends State<SongBar> {
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    IconButton(
-                      padding: EdgeInsets.zero,
-                      onPressed: () {},
-                      icon: Icon(
-                        color: Colors.white,
-                        Icons.play_circle,
-                        size: 32,  
-                      )
-                    ),
-                      
+                    // IconButton(
+                    //   padding: EdgeInsets.zero,
+                    //   onPressed: () {},
+                    //   icon: Icon(
+                    //     color: Colors.white,
+                    //     Icons.play_circle,
+                    //     size: 32,  
+                    //   )
+                    // ),
+                    // Hero(
+                    //   tag: 'play_pause_button',
+                    //   child: PlayPauseButton(musicPath: Provider.of<SongProvider>(context, listen: false).getSongPath)
+                    // ),
+                    PlayPauseButton(musicPath: Provider.of<SongProvider>(context, listen: false).getSongPath),
                     Expanded(
                       flex: 4,
-                      child: Text(context.watch<SongProvider>().getName)
+                      child: Text(context.watch<SongProvider>().getName, style: TextStyle(color: Colors.white),)
                     ),
+                    // Text(context.watch<SongProvider>().getName),
                       
                     IconButton(
                       padding: EdgeInsets.zero,
@@ -82,6 +88,10 @@ class _SongBarState extends State<SongBar> {
                         size: 24,  
                       )
                     ),
+                    //                     Hero(
+                    //   tag: 'play_pause_button',
+                    //   child: PlayPauseButton(musicPath: Provider.of<SongProvider>(context, listen: false).getSongPath)
+                    // ),
                   ],
                 ),
               ),

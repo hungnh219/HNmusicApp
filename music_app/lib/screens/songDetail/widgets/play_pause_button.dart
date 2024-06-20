@@ -1,5 +1,8 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
+import 'package:music_app/main.dart';
+import 'package:music_app/models/song.dart';
+import 'package:provider/provider.dart';
 
 class PlayPauseButton extends StatefulWidget {
   const PlayPauseButton({super.key, required this.musicPath});
@@ -10,7 +13,7 @@ class PlayPauseButton extends StatefulWidget {
 }
 
 class _PlayPauseButtonState extends State<PlayPauseButton> {
-  bool isPlay = false;
+  // bool isPlay = false;
 
   var audioPlayer = AudioPlayer();
 
@@ -25,16 +28,20 @@ class _PlayPauseButtonState extends State<PlayPauseButton> {
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      onPressed: () {
+      onPressed: () => {
         setState(() {
-          isPlay = !isPlay;
+          // context.watch<SongProvider>().switchPlayButton();
+          Provider.of<SongProvider>(context, listen: false).switchPlayButton();
+          bool isPlay = Provider.of<SongProvider>(context, listen: false).isPlay;
+          // print(Provider.of<SongProvider>(context, listen: false).isPlay.toString());
+          // isPlay = !isPlay;
           print(isPlay.toString());
           print((!isPlay).toString());
           print(widget.musicPath);
           isPlay ? playMusic(widget.musicPath) : stopMusic();
-        });
+        })
       },
-      icon: isPlay ? Icon(Icons.pause_circle) : Icon(Icons.play_circle)
+      icon: Provider.of<SongProvider>(context, listen: false).isPlay ? Icon(Icons.pause_circle) : Icon(Icons.play_circle)
     );
   }
 }

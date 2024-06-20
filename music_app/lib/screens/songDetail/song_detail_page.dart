@@ -103,7 +103,11 @@ class SongDetailScreen extends StatelessWidget {
                       //   icon: Icon(Icons.pause_circle)
                       // ),
                       PlayPauseButton(musicPath: song.audioPath),
-
+                      PlayPauseButton(musicPath: song.audioPath),
+                      Hero(
+                        tag: 'play_pause_button',
+                        child: PlayPauseButton(musicPath: song.audioPath)
+                      ),
                       IconButton(
                         onPressed: () {},
                         icon: Icon(Icons.arrow_forward)

@@ -1,9 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:music_app/main.dart';
+import 'package:music_app/screens/songDetail/widgets/play_pause_button.dart';
 import 'package:music_app/widgets/album/album.dart';
 import 'package:music_app/widgets/musicList/music_list.dart';
 import 'package:music_app/widgets/songBar/song_bar.dart';
+import 'package:provider/provider.dart';
 import '../../widgets/header/header.dart';
 import '../../widgets/footer/footer.dart';
 
