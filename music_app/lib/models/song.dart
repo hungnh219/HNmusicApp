@@ -4,7 +4,12 @@ class Song {
   final String image;
   final String audioPath;
 
-  Song({required this.songName, required this.artistName, required this.image, required this.audioPath});
+  Song({
+    required this.songName,
+    required this.artistName,
+    required this.image,
+    required this.audioPath
+  });
 }
 // 34 bai
 

@@ -18,49 +18,29 @@ class PlaylistScreen extends StatelessWidget {
   PlaylistScreen({Key? key, required this.alb}) : super(key:key);
 
   final album alb;
-  // final player = AssetsAudioPlayer();
-  Widget build(BuildContext context) {
-    print('hehe');
-    print(context);
 
+  Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         body: Container(
           width: double.infinity,
-          // color: Colors.red,
           child: Column(
             children: [
-              // header(titleApp: 'Playlist'),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   BackButtonCustom(),
-                  BackButtonCustom(),
-              ],),
-              ElevatedButton(
-                onPressed: () {
-                  playSound();
-                },
-                child: Text('play music - o quy')
+                  IconButton(
+                    onPressed: () {} ,
+                    icon: Icon(Icons.change_circle_outlined) 
+                  )
+                ],
               ),
-              ElevatedButton(
-                onPressed: () {
-                  stopSound();
-                },
-                child: Text('stop music - o quy')
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  playSound1();
-                },
-                child: Text('play music - suyt nua thi')
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  stopSound();
-                },
-                child: Text('stop music - suyt nua thi')
-              ),
+              // Row(
+              //   children: [
+              //     Image(image: )
+              //   ],
+              // ),
               Expanded(
                 child: Stack(
                   children: [
@@ -68,13 +48,6 @@ class PlaylistScreen extends StatelessWidget {
                     itemBuilder: (context, index) {
                       return InkWell(
                         onTap: () => {
-                          print('hung dep trai vcl'),
-                          print(alb.songs[index]),
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(builder: (context) => SongDetailScreen(song: alb.songs[index]))
-                          // )
-                          // context.watch<SongProvider>().changeSong(alb.songs[index]),
                           Provider.of<SongProvider>(context, listen: false).changeSong(alb.songs[index])
                         },
                         child: Padding(
@@ -82,7 +55,6 @@ class PlaylistScreen extends StatelessWidget {
                           child: Row(
                             children: [
                               Container(
-                                // width: double.infinity,
                                 decoration: BoxDecoration(
                                   border: Border.all(color: Colors.black)
                                 ),
@@ -92,7 +64,9 @@ class PlaylistScreen extends StatelessWidget {
                                   width: 40,
                                 ),
                               ),
+
                               SizedBox(width: 8),
+
                               Text(
                                 alb.songs[index].songName
                               )
@@ -105,34 +79,17 @@ class PlaylistScreen extends StatelessWidget {
                     ),
 
                     Positioned(
-                      // top: 30,
-                      // right: 20,
                       bottom: 10,
                       child: SongBar()
                     ),
                   ],
                 ),
               ),
-              // SongBar(),
               footer()
             ],
           ),
         ),
       ),
     );
-  }
-
-  AudioPlayer audioPlayer = AudioPlayer();
-
-  Future<void> playSound() async {
-    String soundPath = "audios/o-quy.mp3";
-    await audioPlayer.play(AssetSource(soundPath));
-  }
-  Future<void> playSound1() async {
-    String soundPath = "audios/suyt-nua-thi.mp3";
-    await audioPlayer.play(AssetSource(soundPath));
-  }
-  Future<void> stopSound() async {
-    await audioPlayer.pause();
   }
 }

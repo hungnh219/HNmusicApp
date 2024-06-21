@@ -8,7 +8,11 @@ class album {
   late final String albumImage;
   late final List<Song> songs;
 
-  album({required this.albumName, required this.albumImage, required this.songs});
+  album({
+    required this.albumName,
+    required this.albumImage,
+    required this.songs
+  });
 }
 
 List<Song> den_vau_list = <Song>[anh_dech_can_gi_nhieu_ngoai_em,

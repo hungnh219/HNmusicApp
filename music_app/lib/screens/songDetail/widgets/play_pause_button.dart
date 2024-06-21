@@ -8,15 +8,13 @@ class PlayPauseButton extends StatefulWidget {
   const PlayPauseButton({super.key, required this.musicPath});
 
   final String musicPath;
+
   @override
   State<PlayPauseButton> createState() => _PlayPauseButtonState();
 }
 
 class _PlayPauseButtonState extends State<PlayPauseButton> {
-  // bool isPlay = false;
-
   var audioPlayer = AudioPlayer();
-
   Future<void> playMusic(musicPath) async {
     await audioPlayer.play(AssetSource(musicPath));
   }
@@ -30,18 +28,10 @@ class _PlayPauseButtonState extends State<PlayPauseButton> {
     return IconButton(
       onPressed: () => {
         setState(() {
-          // context.watch<SongProvider>().switchPlayButton();
           Provider.of<SongProvider>(context, listen: false).switchPlayButton();
-          bool isPlay = Provider.of<SongProvider>(context, listen: false).isPlay;
-          // print(Provider.of<SongProvider>(context, listen: false).isPlay.toString());
-          // isPlay = !isPlay;
-          print(isPlay.toString());
-          print((!isPlay).toString());
-          print(widget.musicPath);
-          isPlay ? playMusic(widget.musicPath) : stopMusic();
         })
       },
-      icon: Provider.of<SongProvider>(context, listen: false).isPlay ? Icon(Icons.pause_circle) : Icon(Icons.play_circle)
+      icon: Provider.of<SongProvider>(context, listen: false).isPlay ? Icon(Icons.pause_circle, color: Colors.red,) : Icon(Icons.play_circle, color: Colors.red,)
     );
   }
 }

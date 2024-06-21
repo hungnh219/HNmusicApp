@@ -28,11 +28,6 @@ class _SongBarState extends State<SongBar> {
             color: Colors.black.withOpacity(0),
             child: InkWell(
               onTap: () => {
-                // Song song = context.watch<SongProvider>().getSong;
-
-                print('123321'),
-                print('123321'),
-                // print(song);
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => SongDetailScreen(song: context.watch<SongProvider>().getSong))
@@ -51,25 +46,11 @@ class _SongBarState extends State<SongBar> {
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    // IconButton(
-                    //   padding: EdgeInsets.zero,
-                    //   onPressed: () {},
-                    //   icon: Icon(
-                    //     color: Colors.white,
-                    //     Icons.play_circle,
-                    //     size: 32,  
-                    //   )
-                    // ),
-                    // Hero(
-                    //   tag: 'play_pause_button',
-                    //   child: PlayPauseButton(musicPath: Provider.of<SongProvider>(context, listen: false).getSongPath)
-                    // ),
                     PlayPauseButton(musicPath: Provider.of<SongProvider>(context, listen: false).getSongPath),
                     Expanded(
                       flex: 4,
                       child: Text(context.watch<SongProvider>().getName, style: TextStyle(color: Colors.white),)
                     ),
-                    // Text(context.watch<SongProvider>().getName),
                       
                     IconButton(
                       padding: EdgeInsets.zero,
@@ -88,10 +69,6 @@ class _SongBarState extends State<SongBar> {
                         size: 24,  
                       )
                     ),
-                    //                     Hero(
-                    //   tag: 'play_pause_button',
-                    //   child: PlayPauseButton(musicPath: Provider.of<SongProvider>(context, listen: false).getSongPath)
-                    // ),
                   ],
                 ),
               ),

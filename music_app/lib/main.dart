@@ -1,3 +1,5 @@
+import 'dart:async';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:music_app/screens/songDetail/song_detail_page.dart';
 import 'package:music_app/utils/theme/my_color.dart';
@@ -7,6 +9,7 @@ import 'package:music_app/widgets/footer/footer.dart';
 import 'package:music_app/screens/home/home_page.dart';
 import 'package:music_app/models/song.dart';
 import 'package:provider/provider.dart';
+import 'package:audioplayers/audioplayers.dart';
 
 void main() {
   runApp(ChangeNotifierProvider(
@@ -18,43 +21,11 @@ void main() {
   ));
 }
 
-// class mainApp extends StatelessWidget {
-//   Widget build (BuildContext context) {
-//     return Scaffold(
-//         backgroundColor: Colors.white,
-//         body: Container(
-//           // height: 200,
-//           height: double.infinity,
-//           color: Colors.yellow,
-//           child: Column(
-//             mainAxisAlignment: MainAxisAlignment.start,
-//             children: [
-//               const header(titleApp: 'Thời khóa biểu 1'),
-//               Expanded(
-//                 // child: Container(
-//                 //   color: Colors.red,
-//                 //   width: double.infinity,
-//                 //   // height: double.infinity,
-//                 //   child: ElevatedButton(
-//                 //     onPressed: () {
-//                 //       Navigator.pushNamed(context, '/a');
-//                 //     },
-//                 //     child: Text('click me'),
-//                 //     ),
-//                 // ),
-//                 child: HomeScreen(),
-//               ),
-//               footer(),
-//               // headerColumn(),
-//             ],
-//           ),
-//         ),
-//       );
-//   }
-// }
-
 class SongProvider extends ChangeNotifier {
+  var audioPlayer = AudioPlayer();
+
   Song _song = o_quy;
+
   bool _isPlay = false;
   
   String get getName => _song.songName;
@@ -64,15 +35,48 @@ class SongProvider extends ChangeNotifier {
   String get getSongPath => _song.audioPath;
   
   bool get isPlay => _isPlay;
+  
+  Future<void> playMusic() async {
+    await audioPlayer.play(AssetSource(this._song.audioPath));
+  }
+
+  Future<void> pauseMusic() async {
+    await audioPlayer.pause();
+  }
+
+  Future<void> replayMusic() async {
+    await audioPlayer.stop();
+
+    await playMusic();
+  }
 
   void switchPlayButton() {
     this._isPlay = !_isPlay;
+    
+    _isPlay ? playMusic() : pauseMusic();
+
     notifyListeners();
   }
 
   void changeSong(Song newSong) {
-    this._song = newSong;
+    if (this._isPlay) {
+      if (this._song != newSong) this._song = newSong;
+    } else {
+      this._isPlay = true;
+      this._song = newSong;
+    }
+
+    replayMusic();
+     
     notifyListeners();
+  }
+
+  void printDuration() {
+    print('123');
+
+    // audioPlayer.onDurationChanged.listen((Duration duration) {
+    //   print(duration.inMilliseconds);
+    // });
   }
 }
 
