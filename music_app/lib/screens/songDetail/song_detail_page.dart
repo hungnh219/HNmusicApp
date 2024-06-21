@@ -38,7 +38,7 @@ class SongDetailScreen extends StatelessWidget {
                     children: [
                       Expanded(
                         flex: 1,
-                        child: BackButton(),
+                        child: BackButtonCustom(),
                       ),
 
                       Expanded(
@@ -56,7 +56,7 @@ class SongDetailScreen extends StatelessWidget {
                         flex: 1,
                         child: IconButton(
                           onPressed: () {},
-                          icon: Icon(Icons.more_vert)
+                          icon: Icon(Icons.more_vert, color: Colors.red,)
                         ),
                       ),
                     ],

@@ -4,9 +4,6 @@
 ## Bắt Đầu
 Hướng dẫn này sẽ giúp bạn cài đặt và chạy dự án trên máy cục bộ của bạn để phát triển và kiểm thử.
 
-### Lưu ý
-- Chạy server trước để tạo API Endpoints, đảm bảo các chức năng cho ứng dụng
-
 ### Thành viên
 - Nguyễn Hoàng Hưng - hungnh219@gmail.com
 - Đỗ Trọng Nhân - 21521214@gm.uit.edu.vn
