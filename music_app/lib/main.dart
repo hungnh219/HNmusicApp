@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:music_app/screens/login/login_page.dart';
 import 'package:music_app/screens/songDetail/song_detail_page.dart';
 import 'package:music_app/utils/theme/my_color.dart';
 import 'package:music_app/utils/theme/my_string.dart';
@@ -16,7 +17,7 @@ void main() {
     create: (_) => SongProvider(),
     child: MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
+      home: LoginScreen(),
     ),
   ));
 }
