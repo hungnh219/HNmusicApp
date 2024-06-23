@@ -65,8 +65,8 @@ class _SongBarState extends State<SongBar> {
                       padding: EdgeInsets.zero,
                       onPressed: () {},
                       icon: Icon(
-                        Icons.heart_broken_outlined,
-                        size: 24,  
+                        CupertinoIcons.heart,
+                        size: 20,
                       )
                     ),
                   ],

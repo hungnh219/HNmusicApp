@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:music_app/main.dart';
+import 'package:music_app/screens/playlist/widgets/album_info.dart';
+import 'package:music_app/screens/songDetail/widgets/play_pause_button.dart';
 import 'package:music_app/widgets/songBar/song_bar.dart';
 import 'package:music_app/models/album.dart';
 import 'package:music_app/screens/songDetail/song_detail_page.dart';
@@ -25,22 +27,24 @@ class PlaylistScreen extends StatelessWidget {
         body: Container(
           width: double.infinity,
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  BackButtonCustom(),
-                  IconButton(
-                    onPressed: () {} ,
-                    icon: Icon(Icons.change_circle_outlined) 
-                  )
-                ],
-              ),
+              BackButtonCustom(),
               // Row(
+              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
               //   children: [
-              //     Image(image: )
+              //     BackButtonCustom(),
+              //     IconButton(
+              //       onPressed: () {} ,
+              //       icon: Icon(Icons.change_circle_outlined) 
+              //     )
               //   ],
               // ),
+              AlbumInfo(alb: alb),
+              ImageIcon(
+                AssetImage("assets/icons/random_icon.png"),
+                size: 24,
+              ),
               Expanded(
                 child: Stack(
                   children: [
