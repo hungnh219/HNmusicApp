@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:music_app/models/user.dart';
 
 import 'package:music_app/screens/home/home_page.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key:key);
+  
 
   @override
   Widget build(BuildContext context) {
     final size=MediaQuery.of(context).size;  
     final size_margin_input=size.height*0.3;
+    final TextEditingController emailController = TextEditingController();
+    final TextEditingController passwordController = TextEditingController();
     return Scaffold(
       body:  Container(
         width: double.infinity,
@@ -51,6 +55,7 @@ class LoginScreen extends StatelessWidget {
                         fontWeight: FontWeight.w600),),
                         SizedBox(height: 10,),
                         TextFormField(
+                          controller: emailController,
                           autocorrect: false,
                           decoration: const InputDecoration(
                             enabledBorder: UnderlineInputBorder(
@@ -69,6 +74,7 @@ class LoginScreen extends StatelessWidget {
                         ),
                         SizedBox(height: 10,),
                         TextFormField(
+                          controller: passwordController,
                           obscureText: true,
                           autocorrect: false,
                           decoration: const InputDecoration(
@@ -91,20 +97,37 @@ class LoginScreen extends StatelessWidget {
                           padding: EdgeInsets.only(top:20,bottom:10),
                           child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(backgroundColor: Colors.blue,foregroundColor: const Color.fromARGB(255, 245, 245, 245)),
-                                onPressed: () => {
-                                  Fluttertoast.showToast(
-                                            msg: "Bạn đã đăng nhập",
+                                onPressed: () {
+                                  String email=emailController.text;
+                                  String password=passwordController.text;
+                                  
+                                  bool isSuccess=userlist.any((user)=>user.email==email&&user.password==password);
+                                  if(isSuccess) {
+                                    Fluttertoast.showToast( 
+                                            msg: "Thành công",
                                             toastLength: Toast.LENGTH_SHORT,
                                             gravity: ToastGravity.BOTTOM,
                                             timeInSecForIosWeb: 1,
                                             backgroundColor: const Color.fromARGB(255, 198, 174, 172),
                                             textColor: Colors.white,
                                             fontSize: 16.0
-                                        ),
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(builder: (context) => HomeScreen())  
-                                  )
+                                        );
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(builder: (context) => HomeScreen())  
+                                        );
+                                  } else {
+                                    Fluttertoast.showToast( 
+                                            msg: "Sai mật khẩu",
+                                            toastLength: Toast.LENGTH_SHORT,
+                                            gravity: ToastGravity.BOTTOM,
+                                            timeInSecForIosWeb: 1,
+                                            backgroundColor: const Color.fromARGB(255, 198, 174, 172),
+                                            textColor: Colors.white,
+                                            fontSize: 16.0
+                                        );
+                                  }
+                                  
                                 },
                                 child: const Text('Loggin', style: TextStyle(fontSize: 28)
                               ),),
