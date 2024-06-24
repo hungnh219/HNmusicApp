@@ -4,7 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:music_app/main.dart';
 import 'package:music_app/models/song.dart';
 import 'package:music_app/screens/songDetail/song_detail_page.dart';
-import 'package:music_app/screens/songDetail/widgets/play_pause_button.dart';
+import 'package:music_app/widgets/playPauseButton/play_pause_button.dart';
 import 'package:provider/provider.dart';
 
 class SongBar extends StatefulWidget {
@@ -41,7 +41,7 @@ class _SongBarState extends State<SongBar> {
                   // color: Colors.yellow.withOpacity(0.8),
                   color: Color.fromRGBO(37, 37, 37, 0.9),
                   borderRadius: BorderRadius.circular(24),
-                  border: Border.all(width: 1, color: Colors.white30)
+                  border: Border.all(width: 1, color: Colors.white70)
                 ),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -57,7 +57,8 @@ class _SongBarState extends State<SongBar> {
                       onPressed: () {},
                       icon: Icon(
                         Icons.more_rounded,
-                        size: 24,  
+                        size: 24,
+                        color: Colors.white,
                       )
                     ),
                       
@@ -65,8 +66,9 @@ class _SongBarState extends State<SongBar> {
                       padding: EdgeInsets.zero,
                       onPressed: () {},
                       icon: Icon(
-                        CupertinoIcons.heart,
+                        CupertinoIcons.heart_fill,
                         size: 20,
+                        color: Colors.white,
                       )
                     ),
                   ],

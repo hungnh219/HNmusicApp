@@ -25,7 +25,12 @@ class AlbumInfo extends StatelessWidget {
               fit: BoxFit.cover,
             ),
             SizedBox(width: 20),
-            Text(alb.albumName),
+            Text(
+              alb.albumName,
+              style: TextStyle(
+                color: Colors.white, 
+              ),
+            ),
           ],
         ),
       ),

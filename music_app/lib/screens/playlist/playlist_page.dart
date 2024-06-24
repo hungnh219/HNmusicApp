@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:music_app/main.dart';
 import 'package:music_app/screens/playlist/widgets/album_info.dart';
-import 'package:music_app/screens/songDetail/widgets/play_pause_button.dart';
+import 'package:music_app/screens/playlist/widgets/custom_modal.dart';
+import 'package:music_app/widgets/playPauseButton/play_pause_button.dart';
 import 'package:music_app/widgets/songBar/song_bar.dart';
 import 'package:music_app/models/album.dart';
 import 'package:music_app/screens/songDetail/song_detail_page.dart';
@@ -20,31 +21,52 @@ class PlaylistScreen extends StatelessWidget {
   PlaylistScreen({Key? key, required this.alb}) : super(key:key);
 
   final album alb;
-
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         body: Container(
+          color: Colors.black,
           width: double.infinity,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               BackButtonCustom(),
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //   children: [
-              //     BackButtonCustom(),
-              //     IconButton(
-              //       onPressed: () {} ,
-              //       icon: Icon(Icons.change_circle_outlined) 
-              //     )
-              //   ],
-              // ),
               AlbumInfo(alb: alb),
-              ImageIcon(
-                AssetImage("assets/icons/random_icon.png"),
-                size: 24,
+              Padding(
+                padding: EdgeInsets.only(right: 8),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    IconButton(
+                      onPressed: () {
+                        showModalBottomSheet(
+                          isScrollControlled: true,
+                          context: context,
+                          builder: (BuildContext context) {
+                            return CustomModal();
+                          }
+                        );
+                      },
+                      icon: Icon(
+                        Icons.more_horiz_outlined,
+                        size: 24,
+                        color: Colors.white,
+                      )
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Provider.of<SongProvider>(context, listen: false).randomSong();
+                      },
+                      child: ImageIcon(
+                        AssetImage("assets/icons/random_icon.png"),
+                        size: 24,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
+                ),
               ),
+              
               Expanded(
                 child: Stack(
                   children: [
@@ -52,7 +74,8 @@ class PlaylistScreen extends StatelessWidget {
                     itemBuilder: (context, index) {
                       return InkWell(
                         onTap: () => {
-                          Provider.of<SongProvider>(context, listen: false).changeSong(alb.songs[index])
+                          Provider.of<SongProvider>(context, listen: false).changeSong(alb.songs[index]),
+                          Provider.of<SongProvider>(context, listen: false).changePlayList(alb.songs)
                         },
                         child: Padding(
                           padding: const EdgeInsets.fromLTRB(8, 8, 8, 8),
@@ -72,7 +95,10 @@ class PlaylistScreen extends StatelessWidget {
                               SizedBox(width: 8),
 
                               Text(
-                                alb.songs[index].songName
+                                alb.songs[index].songName,
+                                style: TextStyle(
+                                  color: Colors.white
+                                ),
                               )
                           ],),
                         ),

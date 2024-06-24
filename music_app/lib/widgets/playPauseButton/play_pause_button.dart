@@ -31,7 +31,13 @@ class _PlayPauseButtonState extends State<PlayPauseButton> {
           Provider.of<SongProvider>(context, listen: false).switchPlayButton();
         })
       },
-      icon: Provider.of<SongProvider>(context, listen: false).isPlay ? Icon(Icons.pause_circle, color: Colors.red,) : Icon(Icons.play_circle, color: Colors.red,)
+      icon: Provider.of<SongProvider>(context, listen: false).isPlay ?
+      Icon(
+        Icons.pause_circle,
+        color: Colors.white,) :
+      Icon(
+        Icons.play_circle,
+        color: Colors.white,)
     );
   }
 }

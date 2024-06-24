@@ -1,9 +1,12 @@
 import 'dart:async';
+import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:music_app/models/album.dart';
 import 'package:music_app/screens/songDetail/song_detail_page.dart';
 import 'package:music_app/utils/theme/my_color.dart';
 import 'package:music_app/utils/theme/my_string.dart';
+import 'package:music_app/widgets/album/album.dart';
 import 'package:music_app/widgets/header/header.dart';
 import 'package:music_app/widgets/footer/footer.dart';
 import 'package:music_app/screens/home/home_page.dart';
@@ -23,6 +26,7 @@ void main() {
 
 class SongProvider extends ChangeNotifier {
   var audioPlayer = AudioPlayer();
+  List<Song> _playList = den_vau_list;
 
   Song _song = o_quy;
 
@@ -35,7 +39,15 @@ class SongProvider extends ChangeNotifier {
   String get getSongPath => _song.audioPath;
   
   bool get isPlay => _isPlay;
-  
+
+  List<Song> get getPlayList => _playList;
+
+  SongProvider() {
+    audioPlayer.onPlayerComplete.listen((event) {
+      nextSong();
+    });
+  }
+
   Future<void> playMusic() async {
     await audioPlayer.play(AssetSource(this._song.audioPath));
   }
@@ -71,12 +83,54 @@ class SongProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void printDuration() {
-    print('123');
+  void changePlayList(List<Song> newPlayList) {
+    this._playList = newPlayList;
+    notifyListeners();
+  }
 
-    // audioPlayer.onDurationChanged.listen((Duration duration) {
-    //   print(duration.inMilliseconds);
-    // });
+  void randomSong() {
+    Random random = new Random();
+    int randomNumber = random.nextInt(_playList.length);
+    changeSong(_playList[randomNumber]);
+  }
+
+  int checkSong() {
+    for (int i = 0; i < _playList.length; i++) {
+      if (_playList[i] == _song) {
+        return i;
+      }
+    }
+
+    return -1;
+  }
+
+  void nextSong() {
+    int songIndex = checkSong();
+
+    if (songIndex == -1) {
+      changeSong(_playList[0]);
+      return;
+    }
+    if (songIndex + 1 == _playList.length) {
+      changeSong(_playList[0]);
+    } else {
+      changeSong(_playList[songIndex + 1]);
+    }
+  }
+
+  void prevSong() {
+    int songIndex = checkSong();
+
+    if (songIndex == -1) {
+      changeSong(_playList[0]);
+      return;
+    }
+
+    if (songIndex == 0) {
+      changeSong(_playList[_playList.length - 1]);
+    } else {
+      changeSong(_playList[songIndex - 1]);
+    }
   }
 }
 

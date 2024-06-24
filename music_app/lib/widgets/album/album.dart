@@ -3,11 +3,13 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:music_app/main.dart';
 import 'package:music_app/models/album.dart';
 
 import 'package:music_app/screens/playlist/playlist_page.dart';
 import 'package:music_app/models/song.dart';
 import 'package:music_app/models/album.dart';
+import 'package:provider/provider.dart';
 
 class Album extends StatelessWidget {
   const Album({Key? key, required this.alb}) : super(key: key);
