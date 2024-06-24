@@ -17,8 +17,8 @@ import 'package:music_app/models/album.dart';
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key:key);
   
-  final List<StatelessWidget> recentlyPlaylist = <StatelessWidget>[Album(alb: den_vau_album), Album(alb: random_album), Album(alb: den_vau_album)];
-  final List<StatelessWidget> likedPlaylist = <StatelessWidget>[Album(alb: den_vau_album), Album(alb: random_album), Album(alb: den_vau_album), Album(alb: random_album)];
+  final List<StatelessWidget> recentlyPlaylist = <StatelessWidget>[Album(alb: den_vau_album), Album(alb: random_album), Album(alb: son_tung_album)];
+  final List<StatelessWidget> likedPlaylist = <StatelessWidget>[Album(alb: wxrdie_album), Album(alb: mck_album), Album(alb: bich_phuong_album)];
   
   @override
   Widget build(BuildContext context) {

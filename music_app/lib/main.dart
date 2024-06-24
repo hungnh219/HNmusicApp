@@ -20,7 +20,7 @@ void main() {
     create: (_) => SongProvider(),
     child: MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginScreen(),
+      home: HomeScreen(),
     ),
   ));
 }

@@ -18,8 +18,8 @@ List<Song> use1_song = <Song>[anh_dech_can_gi_nhieu_ngoai_em,
                               muoi_nam
                             ];
 User user1=User(
-  email: "hung123@gmail.com",
-  password: "hung123",
+  email: "1",
+  password: "1",
   favorites: use1_song
 );
 List<Song> user2_song = <Song>[may_dang_giau_cai_gi_do,
