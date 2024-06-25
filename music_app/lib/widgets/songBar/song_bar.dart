@@ -6,6 +6,7 @@ import 'package:music_app/models/song.dart';
 import 'package:music_app/screens/songDetail/song_detail_page.dart';
 import 'package:music_app/widgets/playPauseButton/play_pause_button.dart';
 import 'package:provider/provider.dart';
+import 'package:music_app/models/provider.dart';
 
 class SongBar extends StatefulWidget {
   const SongBar({super.key});
