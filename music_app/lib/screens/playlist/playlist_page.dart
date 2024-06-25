@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:music_app/main.dart';
+import 'package:music_app/models/provider.dart';
 import 'package:music_app/screens/playlist/widgets/album_info.dart';
 import 'package:music_app/screens/playlist/widgets/custom_modal.dart';
 import 'package:music_app/widgets/playPauseButton/play_pause_button.dart';
@@ -16,7 +17,6 @@ import 'package:music_app/widgets/backButton/back_button.dart';
 import 'package:audioplayers/audioplayers.dart';
 
 import 'package:music_app/models/song.dart';
-
 class PlaylistScreen extends StatelessWidget {
   PlaylistScreen({Key? key, required this.alb}) : super(key:key);
 

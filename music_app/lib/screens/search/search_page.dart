@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:music_app/main.dart';
+import 'package:music_app/models/provider.dart';
 import 'package:music_app/widgets/songBar/song_bar.dart';
 import 'package:provider/provider.dart';
 import '../../widgets/header/header.dart';
@@ -24,9 +25,6 @@ class SearchScreen extends StatelessWidget {
                   header(titleApp: 'Deadlines'),
                   ElevatedButton(
                     onPressed: () {
-                      var s = myFooter.getScreen;
-                      var z = mySong.getName;
-                      print(s + z);
                     },
                     child: Text('h21312')
                   ),

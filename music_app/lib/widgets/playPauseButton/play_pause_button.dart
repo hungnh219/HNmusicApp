@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:music_app/main.dart';
 import 'package:music_app/models/song.dart';
 import 'package:provider/provider.dart';
+import 'package:music_app/models/provider.dart';
 
 class PlayPauseButton extends StatefulWidget {
   const PlayPauseButton({super.key, required this.musicPath});
