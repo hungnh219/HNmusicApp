@@ -55,7 +55,7 @@ class PlaylistScreen extends StatelessWidget {
                     ),
                     GestureDetector(
                       onTap: () {
-                        Provider.of<SongProvider>(context, listen: false).randomSong();
+                        Provider.of<SongProvider>(context, listen: false).randomSong(alb.songs);
                       },
                       child: ImageIcon(
                         AssetImage("assets/icons/random_icon.png"),

@@ -16,13 +16,31 @@ import 'package:provider/provider.dart';
 import 'package:audioplayers/audioplayers.dart';
 
 void main() {
-  runApp(ChangeNotifierProvider(
-    create: (_) => SongProvider(),
-    child: MaterialApp(
+  // runApp(ChangeNotifierProvider(
+  //   create: (_) => SongProvider(),
+  //   child: MaterialApp(
+  //     debugShowCheckedModeBanner: false,
+  //     home: HomeScreen(),
+  //   ),
+  // ));
+
+  // runApp(MultiProvider(
+  //   providers: [
+  //     ChangeNotifierProvider(create: (context) => SongProvider()),
+  //     ChangeNotifierProvider(create: (context) => FooterProvider())
+  //   ],
+  //   child: MaterialApp(
+  //     debugShowCheckedModeBanner: false,
+  //     home: HomeScreen(),
+  //   )
+  //   )
+  // );
+
+  runApp(MaterialApp(
       debugShowCheckedModeBanner: false,
       home: HomeScreen(),
-    ),
-  ));
+    )
+  );
 }
 
 class SongProvider extends ChangeNotifier {
@@ -89,7 +107,11 @@ class SongProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void randomSong() {
+  void randomSong(List<Song> playList) {
+    if (_playList != playList) {
+      changePlayList(playList);
+    }
+
     Random random = new Random();
     int randomNumber = random.nextInt(_playList.length);
     changeSong(_playList[randomNumber]);
@@ -135,3 +157,8 @@ class SongProvider extends ChangeNotifier {
   }
 }
 
+class FooterProvider extends ChangeNotifier {
+  String _screen = 'home';
+
+  String get getScreen => _screen;
+}

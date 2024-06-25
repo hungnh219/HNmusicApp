@@ -253,6 +253,6 @@ Song phong_cach = Song(
 Song stupid_rich_man = Song(
   songName: 'Stupid rich man',
   artistName: 'MCK',
-  image: 'assets/images/songs/stupid-rich-main.png',
-  audioPath: 'audios/stupid-rich-main.mp3'
+  image: 'assets/images/songs/stupid-rich-man.png',
+  audioPath: 'audios/stupid-rich-man.mp3'
 );
