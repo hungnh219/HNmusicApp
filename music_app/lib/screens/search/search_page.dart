@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:music_app/main.dart';
 import 'package:music_app/models/provider.dart';
+import 'package:music_app/screens/search/widgets/search_box.dart';
 import 'package:music_app/widgets/songBar/song_bar.dart';
 import 'package:provider/provider.dart';
 import '../../widgets/header/header.dart';
@@ -17,6 +18,7 @@ class SearchScreen extends StatelessWidget {
       builder: (context,mySong, myFooter, child) {
         return SafeArea(
           child: Scaffold(
+            resizeToAvoidBottomInset: false,
             body: Container(
               width: double.infinity,
               // color: Colors.red,
@@ -28,6 +30,7 @@ class SearchScreen extends StatelessWidget {
                     },
                     child: Text('h21312')
                   ),
+                  SearchBox(),
                   Expanded(
                     child: Stack(
                       children: [

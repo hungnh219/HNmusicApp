@@ -17,14 +17,6 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:music_app/models/provider.dart';
 
 void main() {
-  // runApp(ChangeNotifierProvider(
-  //   create: (_) => SongProvider(),
-  //   child: MaterialApp(
-  //     debugShowCheckedModeBanner: false,
-  //     home: HomeScreen(),
-  //   ),
-  // ));
-
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(create: (context) => SongProvider()),
@@ -36,10 +28,4 @@ void main() {
     )
     )
   );
-
-  // runApp(MaterialApp(
-  //     debugShowCheckedModeBanner: false,
-  //     home: HomeScreen(),
-  //   )
-  // );
 }
