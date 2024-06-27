@@ -6,6 +6,8 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:music_app/models/song.dart';
 import 'package:music_app/models/album.dart';
+import 'package:music_app/models/user.dart';
+import 'package:provider/provider.dart';
 
 class SongProvider extends ChangeNotifier {
   var audioPlayer = AudioPlayer();
@@ -181,5 +183,20 @@ class TimerProvider with ChangeNotifier {
   double roundToDecimals(double value, int decimals) {
     int fac = pow(10, decimals).toInt();
     return (value * fac).round() / fac;
+  }
+}
+class UserPovider extends ChangeNotifier {
+   String _email ='test';
+  late List<Song> favorites;
+  get email=>_email;
+  void setUser(email) {
+    this._email=email;
+    userlist.forEach((e) {
+      if(e.email==email) {
+        favorites=e.favorites;
+        return;
+      }
+    });
+    notifyListeners();
   }
 }
