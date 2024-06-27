@@ -20,7 +20,8 @@ void main() {
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(create: (context) => SongProvider()),
-      ChangeNotifierProvider(create: (context) => FooterProvider())
+      ChangeNotifierProvider(create: (context) => FooterProvider()),
+      ChangeNotifierProvider(create: (context) => TimerProvider())
     ],
     child: MaterialApp(
       debugShowCheckedModeBanner: false,

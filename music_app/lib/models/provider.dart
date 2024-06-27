@@ -1,4 +1,5 @@
 
+import 'dart:async';
 import 'dart:math';
 
 import 'package:audioplayers/audioplayers.dart';
@@ -140,5 +141,45 @@ class FooterProvider extends ChangeNotifier {
     this._screenClicked[screenIndex] = true;
 
     notifyListeners();
+  }
+}
+
+class TimerProvider with ChangeNotifier {
+  double percent = 1.0;
+  Timer? _timer;
+  bool isRunning = false;
+
+  void startTimer(int totalTime) {
+    if (_timer != null) return;
+
+    _timer = Timer.periodic(Duration(seconds: 1), (Timer timer) {
+      if (percent > 0) {
+        percent = roundToDecimals(percent - 1 / totalTime, 4);
+        notifyListeners();
+      } else {
+        timer.cancel();
+        _timer = null;
+      }
+    });
+
+    isRunning = true;
+    notifyListeners();
+  }
+
+  void stopTimer() {
+    _timer?.cancel();
+    _timer = null;
+    isRunning = false;
+    notifyListeners();
+  }
+
+  void resetTimer() {
+    percent = 1.0;
+    stopTimer();
+  }
+
+  double roundToDecimals(double value, int decimals) {
+    int fac = pow(10, decimals).toInt();
+    return (value * fac).round() / fac;
   }
 }
