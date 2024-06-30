@@ -16,6 +16,7 @@ class LoginScreen extends StatelessWidget {
     final size_margin_input=size.height*0.3;
     final TextEditingController emailController = TextEditingController();
     final TextEditingController passwordController = TextEditingController();
+    BuildContext mContextUser=context;
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -109,6 +110,8 @@ class LoginScreen extends StatelessWidget {
                                       
                                       bool isSuccess=userlist.any((user)=>user.email==email&&user.password==password);
                                       if(isSuccess) {
+                                       
+                                        
                                         Fluttertoast.showToast( 
                                                 msg: "Thành công",
                                                 toastLength: Toast.LENGTH_SHORT,
@@ -118,11 +121,14 @@ class LoginScreen extends StatelessWidget {
                                                 textColor: Colors.white,
                                                 fontSize: 16.0
                                             );
+                                           context.read<UserPovider>().setUser(email);
+
                                             myFooter.ChangeScreen(0);
                                             Navigator.push(
                                               context,
                                               MaterialPageRoute(builder: (context) => HomeScreen())  
-                                            );
+                                            ); 
+                                       
                                       } else {
                                         Fluttertoast.showToast( 
                                                 msg: "Sai mật khẩu",

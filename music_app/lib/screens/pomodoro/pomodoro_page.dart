@@ -5,7 +5,9 @@ import 'dart:async';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:music_app/models/provider.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:provider/provider.dart';
 import '../../widgets/header/header.dart';
 import '../../widgets/footer/footer.dart';
 import '../login/login_page.dart';
@@ -41,8 +43,9 @@ class PomodoroScreen extends StatelessWidget {
                     context,
                     MaterialPageRoute(builder: (context) => const LoginScreen())
                   );
+                  
                 },
-                child: Text('log out')
+                child: Text('log out') 
               ),
               footer(),
             ],

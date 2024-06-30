@@ -1,68 +1,48 @@
-import 'dart:ui';
-
-import 'package:flutter/cupertino.dart';
-import 'dart:async';
-import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:music_app/models/provider.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:provider/provider.dart';
 
 
-class TimeCount extends StatefulWidget {
-  int timeNum=1500;
-  @override
-  State<StatefulWidget> createState() {
-    return TimeCountState();
-  }
-  
-}
-class TimeCountState extends State<TimeCount> {
-  late double percent;
-  late Timer timer;
-  late bool isStop;
-  @override
-  void initState() {
-    isStop=false;
-    percent=1;
-    super.initState();
-  }
+class TimeCount extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    int totalSeconds = (widget.timeNum * percent).round();
+    final timerProvider = context.watch<TimerProvider>();
+    int totalSeconds = (1500 * timerProvider.percent).round();
     int minutes = totalSeconds ~/ 60;
     int seconds = totalSeconds % 60;
-    TextStyle t1=const TextStyle(
-                      color: Color.fromARGB(255, 255, 255, 255),
-                      fontWeight: FontWeight.bold,
-                      fontSize: 50,
-                      );
+
+    TextStyle t1 = const TextStyle(
+      color: Color.fromARGB(255, 255, 255, 255),
+      fontWeight: FontWeight.bold,
+      fontSize: 50,
+    );
+
     return Column(
       children: [
         CircularPercentIndicator(
-          radius:300,
+          radius: 300,
           lineWidth: 30,
-          percent: this.percent,
+          percent: timerProvider.percent,
           circularStrokeCap: CircularStrokeCap.butt,
           progressColor: Color.fromARGB(179, 204, 108, 236),
           backgroundColor: Color.fromARGB(255, 44, 41, 44),
           center: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(minutes.toString().padLeft(2, '0'),
-              style: t1,
+              Text(
+                minutes.toString().padLeft(2, '0'),
+                style: t1,
               ),
-
               SizedBox(width: 4),
-
-              Text(":",style: t1),
-
+              Text(":", style: t1),
               SizedBox(width: 4),
-
-              Text(seconds.toString().padLeft(2, '0'),
-              style: t1,
+              Text(
+                seconds.toString().padLeft(2, '0'),
+                style: t1,
               ),
             ],
-          )
+          ),
         ),
         Container(
           margin: const EdgeInsets.fromLTRB(0, 5, 0, 0),
@@ -71,21 +51,22 @@ class TimeCountState extends State<TimeCount> {
             children: [
               ElevatedButton(
                 onPressed: () {
-                  handleButton();
+                  if (timerProvider.percent > 0) {
+                    if (!timerProvider.isRunning) {
+                      timerProvider.startTimer(1500);
+                    } else {
+                      timerProvider.stopTimer();
+                    }
+                  }
                 },
-                child: Text(renameButton())
+                child: Text(timerProvider.isRunning ? 'Stop' : 'Start'),
               ),
-
               Spacer(),
-
               ElevatedButton(
                 onPressed: () {
-                restartTimer();
-                setState(() {
-                  isStop=false;
-                });
+                  timerProvider.resetTimer();
                 },
-                child: Text('Restart')
+                child: Text('Restart'),
               ),
             ],
           ),
@@ -93,65 +74,4 @@ class TimeCountState extends State<TimeCount> {
       ],
     );
   }
-  String renameButton() {
-    if(percent==1) {
-      return "Start";
-    }
-    if(percent==0) {
-      return "Done";
-    }
-    if(isStop) {
-      return "Continue";
-    }else {
-      return "Stop";
-    }
-  }
-
-
-  void startTimer() { 
-   
-    timer=new Timer.periodic(new Duration(seconds: 1), (Timer timer1) {
-      if(percent!=0) {
-        setState(() {
-        percent=roundToDecimals(percent-1/1500, 4);
-        });
-      } else {
-        timer1.cancel();
-      }
-      });
-    
-  }
-  void handleButton() {
-    if(percent!=0) {
-      if(percent==1) {
-        startTimer();
-        setState(() {
-          isStop=false;
-      });
-      } else if(!isStop) {
-        stopTimer();
-        setState(() {
-          isStop=true;
-        });
-      } else {
-        startTimer();
-        setState(() {
-          isStop=false;
-        });
-      }
-      }
-  }
-  void stopTimer() {
-    timer.cancel();
-    }
-  void restartTimer() {
-    setState(() {
-      percent=1;
-    });
-    timer.cancel();
-  }
-double roundToDecimals(double value, int decimals) {
-  int fac = pow(10, decimals).toInt();
-  return (value * fac).round() / fac;
-}
 }

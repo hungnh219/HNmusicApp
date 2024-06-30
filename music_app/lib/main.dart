@@ -20,11 +20,13 @@ void main() {
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(create: (context) => SongProvider()),
-      ChangeNotifierProvider(create: (context) => FooterProvider())
+      ChangeNotifierProvider(create: (context) => FooterProvider()),
+      ChangeNotifierProvider(create: (context) => TimerProvider()),
+      ChangeNotifierProvider(create: (context) => UserPovider())
     ],
     child: MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
+      home: LoginScreen(),
     )
     )
   );
