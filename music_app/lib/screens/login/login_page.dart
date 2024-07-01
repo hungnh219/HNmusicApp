@@ -121,7 +121,7 @@ class LoginScreen extends StatelessWidget {
                                                 textColor: Colors.white,
                                                 fontSize: 16.0
                                             );
-                                           context.read<UserPovider>().setUser(email);
+                                           context.read<UserProvider>().setUser(email);
 
                                             myFooter.ChangeScreen(0);
                                             Navigator.push(

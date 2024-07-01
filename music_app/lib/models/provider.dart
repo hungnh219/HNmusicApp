@@ -185,7 +185,7 @@ class TimerProvider with ChangeNotifier {
     return (value * fac).round() / fac;
   }
 }
-class UserPovider extends ChangeNotifier {
+class UserProvider extends ChangeNotifier {
    String _email ='test';
   late List<Song> favorites;
   get email=>_email;
