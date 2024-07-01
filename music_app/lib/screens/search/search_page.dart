@@ -21,27 +21,16 @@ class SearchScreen extends StatelessWidget {
             resizeToAvoidBottomInset: false,
             body: Container(
               width: double.infinity,
-              // color: Colors.red,
+              color: Colors.black87,
               child: Column(
                 children: [
-                  header(titleApp: 'Deadlines'),
-                  ElevatedButton(
-                    onPressed: () {
-                    },
-                    child: Text('h21312')
-                  ),
-                  SearchBox(),
+                  // header(titleApp: 'Deadlines'),
                   Expanded(
                     child: Stack(
                       children: [
-                        ListView(
-                          children: [
-                          ],
-                        ),
-    
+                        SearchBox(),
+                  
                         Positioned(
-                          // top: 30,
-                          // right: 20,
                           bottom: 10,
                           child: SongBar()
                         ),

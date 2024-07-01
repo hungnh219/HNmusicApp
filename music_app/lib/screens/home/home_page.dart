@@ -26,7 +26,7 @@ class HomeScreen extends StatelessWidget {
       child: Scaffold(
         body: Container(
           width: double.infinity,
-          color: Colors.black,
+          color: Colors.black87,
           child: Column(
             children: [
               const header(titleApp: 'Home'),

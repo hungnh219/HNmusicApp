@@ -88,7 +88,7 @@ class footer extends StatelessWidget {
                   myFooter.ChangeScreen(2);
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const LibraryScreen())  
+                    MaterialPageRoute(builder: (context) => LibraryScreen())  
                   );
                 },
                 child: Column(children: [
@@ -116,7 +116,7 @@ class footer extends StatelessWidget {
                   myFooter.ChangeScreen(3);
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const PomodoroScreen())  
+                    MaterialPageRoute(builder: (context) => PomodoroScreen())  
                   );
                 },
                 child: Column(children: [

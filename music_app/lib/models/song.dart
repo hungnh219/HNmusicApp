@@ -256,3 +256,53 @@ Song stupid_rich_man = Song(
   image: 'assets/images/songs/stupid-rich-man.png',
   audioPath: 'audios/stupid-rich-man.mp3'
 );
+
+List<Song> allSongList = <Song>[
+  am_tham_ben_em,
+  anh_dech_can_gi_nhieu_ngoai_em,
+  bai_nay_chill_phet,
+  bao_gio_lay_chong,
+  bua_yeu,
+  buon_hay_vui,
+  chi_mot_dem_nua_thoi,
+  chim_sau,
+  choi_do,
+  con_mua_ngang_qua,
+  di_du_dua_di,
+  em_bo_thuoc_chua,
+  em_iu,
+  gio_van_hat,
+  gui_anh_xa_nho,
+  hay_trao_cho_anh,
+  hom_nay_toi_buon,
+  iceman,
+  lam_gi_phai_hot,
+  loi_nho,
+  may_dang_giau_cai_gi_do,
+  mot_trieu_like,
+  muoi_nam,
+  nang_am_xa_dan,
+  nhu_ngay_hom_qua,
+  nhung_loi_hua_bo_quen,
+  o_quy,
+  phong_cach,
+  stupid_rich_man,
+  suyt_nua_thi,
+  tetvoven,
+  thai_binh_mo_hoi_roi,
+  vinflow,
+  youngz
+];
+
+List<Song> recentlyPlayedList = <Song>[
+  hay_trao_cho_anh,
+  iceman,
+  phong_cach,
+  stupid_rich_man,
+  nhu_ngay_hom_qua,
+  gio_van_hat,
+  con_mua_ngang_qua,
+  o_quy,
+  suyt_nua_thi,
+  lam_gi_phai_hot
+];
