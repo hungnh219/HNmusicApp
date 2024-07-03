@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:music_app/screens/profile/profile_page.dart';
 import '../../utils/theme/my_color.dart';
 
 class header extends StatelessWidget {
@@ -55,7 +56,10 @@ class header extends StatelessWidget {
               child:
                 IconButton(
                   onPressed: () {
-                    print('hung dep trai vcl may con ga biet gi');
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ProfileScreen())
+                    );
                   },
                   icon: Icon(Icons.person, color: Colors.white,))
               )
