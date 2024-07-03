@@ -22,11 +22,11 @@ void main() {
       ChangeNotifierProvider(create: (context) => SongProvider()),
       ChangeNotifierProvider(create: (context) => FooterProvider()),
       ChangeNotifierProvider(create: (context) => TimerProvider()),
-      ChangeNotifierProvider(create: (context) => UserPovider())
+      ChangeNotifierProvider(create: (context) => UserProvider())
     ],
     child: MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginScreen(),
+      home: HomeScreen(),
     )
     )
   );
