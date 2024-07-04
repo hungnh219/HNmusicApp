@@ -9,13 +9,16 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Column(
-          children: [
-            BackButton(),
-            Text('hehe'),
-            // CircularProgressIndicator()
-            // AnimatedLogo(animation: CurvedAnimation(parent: controller, curve: Curves.easeIn))
-          ],
+        body: Center(
+          child: Column(
+            children: [
+              BackButton(),
+              Text('click here !!!'),
+              FlashCard()
+              // CircularProgressIndicator()
+              // AnimatedLogo(animation: CurvedAnimation(parent: controller, curve: Curves.easeIn))
+            ],
+          ),
         ),
       ),
     );
