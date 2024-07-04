@@ -1,63 +1,102 @@
+import 'dart:math';
+
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
-class AnimatedLogo extends AnimatedWidget {
-  const AnimatedLogo({super.key, required Animation<double> animation})
-      : super(listenable: animation);
-
-  // Make the Tweens static because they don't change.
-  static final _opacityTween = Tween<double>(begin: 0.1, end: 1);
-  static final _sizeTween = Tween<double>(begin: 0, end: 300);
+class FlashCard extends StatefulWidget {
+  const FlashCard({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final animation = listenable as Animation<double>;
-    return Center(
-      child: Opacity(
-        opacity: _opacityTween.evaluate(animation),
-        child: Container(
-          margin: const EdgeInsets.symmetric(vertical: 10),
-          height: _sizeTween.evaluate(animation),
-          width: _sizeTween.evaluate(animation),
-          child: Text('hehe'),
-        ),
-      ),
-    );
-  }
+  State<FlashCard> createState() => _FlashCardState();
 }
 
-class LogoApp extends StatefulWidget {
-  const LogoApp({super.key});
+class _FlashCardState extends State<FlashCard> with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation _animation;
+  bool isFlipped = false;
 
-  @override
-  State<LogoApp> createState() => _LogoAppState();
-}
+  double beginAnimationValue = 0.0;
+  double endAnimationValue = 0.0;
 
-class _LogoAppState extends State<LogoApp> with SingleTickerProviderStateMixin {
-  late Animation<double> animation;
-  late AnimationController controller;
+  Color redColor = Colors.red;
+  Color blueColor = Colors.blue;
+
+  Color flashCardColor = Colors.red;
+  // Color flashCardColor = redColor; 
 
   @override
   void initState() {
     super.initState();
-    controller =
-        AnimationController(duration: const Duration(seconds: 2), vsync: this);
-    animation = CurvedAnimation(parent: controller, curve: Curves.easeIn)
-      ..addStatusListener((status) {
-        if (status == AnimationStatus.completed) {
-          controller.reverse();
-        } else if (status == AnimationStatus.dismissed) {
-          controller.forward();
-        }
-      });
-    controller.forward();
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 2),     
+    );
+    _animation = Tween<double>(
+      begin: beginAnimationValue,
+      end: endAnimationValue
+    ).animate(_controller);
+
+    // _controller.repeat();
   }
 
   @override
-  Widget build(BuildContext context) => AnimatedLogo(animation: animation);
-
-  @override
   void dispose() {
-    controller.dispose();
+    _controller.dispose();
     super.dispose();
+  }
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        setState(() {
+          // if (isFlipped) {
+          //   _controller.reverse();
+          // } else {
+          //   _controller.forward();
+          // }
+          // double temp = beginAnimationValue;
+
+          endAnimationValue = beginAnimationValue + pi;
+
+          _animation = Tween<double>(
+            begin: beginAnimationValue,
+            end: endAnimationValue
+          ).animate(_controller);
+
+          _controller.forward(from: 0.0);
+          // endAnimationValue == 0;
+
+          beginAnimationValue = endAnimationValue % (2 * pi); // reset 
+          
+
+          print(beginAnimationValue.toString() + endAnimationValue.toString());
+          print(_animation.value);
+          isFlipped =  !isFlipped;
+          if (isFlipped) {
+            flashCardColor = blueColor;
+          } else {
+            flashCardColor = redColor;
+          }
+        });
+      },
+      child: AnimatedBuilder(
+        animation: _controller,
+        builder: (context, child) {
+          return Transform(
+            alignment: Alignment.center,
+            transform: Matrix4.identity()
+              // ..setEntry(3, 2, 0.001)
+              ..rotateX(_animation.value),
+            child: Container(
+              height: 400,
+              width: 240,
+              color: flashCardColor,
+              child: Text('123456789'),
+            ),
+          );
+        }
+      ),
+    );
   }
 }
