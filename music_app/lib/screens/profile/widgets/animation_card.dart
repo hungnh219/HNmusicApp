@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:music_app/models/album.dart';
 
 class FlashCard extends StatefulWidget {
   const FlashCard({super.key});
@@ -14,6 +15,7 @@ class FlashCard extends StatefulWidget {
 class _FlashCardState extends State<FlashCard> with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation _animation;
+  late Animation<String?> _colorAnimation;
   bool isFlipped = false;
 
   double beginAnimationValue = 0.0;
@@ -23,6 +25,7 @@ class _FlashCardState extends State<FlashCard> with SingleTickerProviderStateMix
   Color blueColor = Colors.blue;
 
   Color flashCardColor = Colors.red;
+  String imgCard = 'assets/images/songs/vinflow.png';
   // Color flashCardColor = redColor; 
 
   @override
@@ -36,8 +39,30 @@ class _FlashCardState extends State<FlashCard> with SingleTickerProviderStateMix
       begin: beginAnimationValue,
       end: endAnimationValue
     ).animate(_controller);
-
+    // _colorAnimation = ColorTween(
+    //   begin: Colors.red,
+    //   end: Colors.blue,
+    // ).animate(_controller);
+    _colorAnimation = Tween<String>(
+      begin: 'assets/images/songs/vinflow.png',
+      end: 'assets/images/songs/hay-trao-cho-anh.png',
+    ).animate(_controller);
     // _controller.repeat();
+    _controller.addListener(() {
+      if (_controller.status == AnimationStatus.forward && _controller.value >= 0.5) {
+        if (imgCard != 'assets/images/songs/hay-trao-cho-anh.png') {
+          setState(() {
+            imgCard = 'assets/images/songs/hay-trao-cho-anh.png';
+          });
+        }
+      } else if (_controller.status == AnimationStatus.forward && _controller.value <= 0.5) {
+        if (imgCard != 'assets/images/songs/vinflow.png') {
+          setState(() {
+            imgCard = 'assets/images/songs/vinflow.png';
+          });
+        }
+      }
+    });
   }
 
   @override
@@ -87,12 +112,14 @@ class _FlashCardState extends State<FlashCard> with SingleTickerProviderStateMix
             alignment: Alignment.center,
             transform: Matrix4.identity()
               // ..setEntry(3, 2, 0.001)
-              ..rotateX(_animation.value),
+              ..rotateY(_animation.value),
             child: Container(
               height: 400,
               width: 240,
-              color: flashCardColor,
-              child: Text('123456789'),
+              color: Colors.lightBlueAccent,
+              child: Image.asset(
+                imgCard
+              ),
             ),
           );
         }
